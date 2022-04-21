@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "amd",
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "types": ["node"],
+    "declaration": true,
+    "rootDirs": [
+      "src",
+    ],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*"
+    , "../editor/src/classes/menu/AccountSettingsPanel.js", "../editor/src/classes/menu/IMenu.ts", "../editor/src/classes/bootstrap"],
+  "exclude": [
+    "node_modules"
+  ]
+}

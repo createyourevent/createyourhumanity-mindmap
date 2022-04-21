@@ -1,0 +1,1040 @@
+{
+  "account.delete-warning": [
+    {
+      "type": 0,
+      "value": "Denken Sie daran, dass Sie keine von Ihnen erstellte Mindmap abrufen können. Alle Ihre Informationen werden gelöscht und können nicht wiederhergestellt werden."
+    }
+  ],
+  "accountinfo.button": [
+    {
+      "type": 0,
+      "value": "Akzeptieren"
+    }
+  ],
+  "accountinfo.deleteaccount": [
+    {
+      "type": 0,
+      "value": "Konto löschen"
+    }
+  ],
+  "accountinfo.email": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "accountinfo.firstname": [
+    {
+      "type": 0,
+      "value": "Vorname"
+    }
+  ],
+  "accountinfo.lastname": [
+    {
+      "type": 0,
+      "value": "Nachname"
+    }
+  ],
+  "accountinfo.title": [
+    {
+      "type": 0,
+      "value": "Kontoinformation"
+    }
+  ],
+  "action.cancel-button": [
+    {
+      "type": 0,
+      "value": "Abbrechen"
+    }
+  ],
+  "action.close-button": [
+    {
+      "type": 0,
+      "value": "Nah dran"
+    }
+  ],
+  "action.delete": [
+    {
+      "type": 0,
+      "value": "Löschen"
+    }
+  ],
+  "action.delete-description": [
+    {
+      "type": 0,
+      "value": "Gelöschte Mindmaps können nicht wiederhergestellt werden. Möchtest du fortfahren ?."
+    }
+  ],
+  "action.delete-title": [
+    {
+      "type": 0,
+      "value": "Löschen"
+    }
+  ],
+  "action.duplicate": [
+    {
+      "type": 0,
+      "value": "Duplikat"
+    }
+  ],
+  "action.export": [
+    {
+      "type": 0,
+      "value": "Export"
+    }
+  ],
+  "action.history": [
+    {
+      "type": 0,
+      "value": "Geschichte"
+    }
+  ],
+  "action.history-description": [
+    {
+      "type": 0,
+      "value": "Liste der in den letzten 90 Tagen eingeführten Änderungen."
+    }
+  ],
+  "action.history-title": [
+    {
+      "type": 0,
+      "value": "Versionsgeschichte"
+    }
+  ],
+  "action.import": [
+    {
+      "type": 0,
+      "value": "Importieren"
+    }
+  ],
+  "action.info": [
+    {
+      "type": 0,
+      "value": "Die Info"
+    }
+  ],
+  "action.label": [
+    {
+      "type": 0,
+      "value": "Etikett hinzufügen"
+    }
+  ],
+  "action.new": [
+    {
+      "type": 0,
+      "value": "Neue Karte"
+    }
+  ],
+  "action.open": [
+    {
+      "type": 0,
+      "value": "Offen"
+    }
+  ],
+  "action.print": [
+    {
+      "type": 0,
+      "value": "Drucken"
+    }
+  ],
+  "action.publish": [
+    {
+      "type": 0,
+      "value": "Veröffentlichen"
+    }
+  ],
+  "action.rename": [
+    {
+      "type": 0,
+      "value": "Umbenennen"
+    }
+  ],
+  "action.rename-description-placeholder": [
+    {
+      "type": 0,
+      "value": "Beschreibung"
+    }
+  ],
+  "action.rename-name-placeholder": [
+    {
+      "type": 0,
+      "value": "Name"
+    }
+  ],
+  "action.share": [
+    {
+      "type": 0,
+      "value": "Teilen"
+    }
+  ],
+  "changepwd.button": [
+    {
+      "type": 0,
+      "value": "Veränderung"
+    }
+  ],
+  "changepwd.confirm-password": [
+    {
+      "type": 0,
+      "value": "Kennwort bestätigen"
+    }
+  ],
+  "changepwd.description": [
+    {
+      "type": 0,
+      "value": "Bitte geben Sie das neue Passwort für Ihr Konto ein."
+    }
+  ],
+  "changepwd.password": [
+    {
+      "type": 0,
+      "value": "Passwort"
+    }
+  ],
+  "changepwd.password-match": [
+    {
+      "type": 0,
+      "value": "Passwort stimmt nicht überein. Bitte versuche es erneut."
+    }
+  ],
+  "changepwd.title": [
+    {
+      "type": 0,
+      "value": "Kennwort ändern"
+    }
+  ],
+  "common.wait": [
+    {
+      "type": 0,
+      "value": "Warten Sie mal ..."
+    }
+  ],
+  "create.button": [
+    {
+      "type": 0,
+      "value": "Erstellen"
+    }
+  ],
+  "create.description": [
+    {
+      "type": 0,
+      "value": "Bitte geben Sie den neuen Kartennamen und die Beschreibung ein."
+    }
+  ],
+  "create.title": [
+    {
+      "type": 0,
+      "value": "Erstellen Sie eine neue Mindmap."
+    }
+  ],
+  "deletem.title": [
+    {
+      "type": 0,
+      "value": "Alle ausgewählten Karten werden gelöscht"
+    }
+  ],
+  "duplicate.title": [
+    {
+      "type": 0,
+      "value": "Duplikat"
+    }
+  ],
+  "editor.try-welcome": [
+    {
+      "type": 0,
+      "value": "Dieser Ausgabebereich zeigt einige der Mindmap-Editor-Funktionen!"
+    }
+  ],
+  "editor.try-welcome-description": [
+    {
+      "type": 0,
+      "value": "Melden Sie sich an, um kostenlos eine unbegrenzte Anzahl von Mindmaps zu erstellen, zu teilen und zu veröffentlichen."
+    }
+  ],
+  "expired.description": [
+    {
+      "type": 0,
+      "value": "Ihre aktuelle Sitzung ist abgelaufen. Bitte melden Sie sich an und versuchen Sie es erneut."
+    }
+  ],
+  "expired.title": [
+    {
+      "type": 0,
+      "value": "Deine Sitzung ist abgelaufen"
+    }
+  ],
+  "export.desc": [
+    {
+      "type": 0,
+      "value": "Exportieren Sie diese Karte im gewünschten Format und verwenden Sie sie in Ihren Präsentationen oder teilen Sie sie per E-Mail"
+    }
+  ],
+  "export.document": [
+    {
+      "type": 0,
+      "value": "Mindmap-Tools: Exportieren Sie Ihre Mindmap in Mindmap-Tool-Formate von Drittanbietern"
+    }
+  ],
+  "export.document-label": [
+    {
+      "type": 0,
+      "value": "Dokument: Exportieren Sie Ihre Mindmap in ein eigenständiges Dokument, das Sie teilen können"
+    }
+  ],
+  "export.image": [
+    {
+      "type": 0,
+      "value": "Bild: Erhalten Sie eine grafische Darstellung Ihrer Karte mit allen Farben und Formen."
+    }
+  ],
+  "export.title": [
+    {
+      "type": 0,
+      "value": "Export"
+    }
+  ],
+  "export.warning": [
+    {
+      "type": 0,
+      "value": "Der Export in ein Bild (SVG, PNG, JPEG, PDF) ist nur in der Editor-Symbolleiste verfügbar."
+    }
+  ],
+  "footer.aboutus": [
+    {
+      "type": 0,
+      "value": "Über uns"
+    }
+  ],
+  "footer.contactus": [
+    {
+      "type": 0,
+      "value": "Kontaktiere uns"
+    }
+  ],
+  "footer.donations": [
+    {
+      "type": 0,
+      "value": "Spenden"
+    }
+  ],
+  "footer.faq": [
+    {
+      "type": 0,
+      "value": "FAQ."
+    }
+  ],
+  "footer.faqandhelp": [
+    {
+      "type": 0,
+      "value": "Hilfe & FAQ"
+    }
+  ],
+  "footer.feedback": [
+    {
+      "type": 0,
+      "value": "Feedback"
+    }
+  ],
+  "footer.opensource": [
+    {
+      "type": 0,
+      "value": "Open Source"
+    }
+  ],
+  "footer.others": [
+    {
+      "type": 0,
+      "value": "Andere"
+    }
+  ],
+  "footer.support": [
+    {
+      "type": 0,
+      "value": "Unterstützt"
+    }
+  ],
+  "footer.team": [
+    {
+      "type": 0,
+      "value": "Ausrüstung"
+    }
+  ],
+  "footer.termsandconditions": [
+    {
+      "type": 0,
+      "value": "Allgemeine Geschäftsbedingungen"
+    }
+  ],
+  "forgot.desc": [
+    {
+      "type": 0,
+      "value": "Wir senden Ihnen eine E-Mail, um Ihr Passwort zurückzusetzen."
+    }
+  ],
+  "forgot.email": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "forgot.page-title": [
+    {
+      "type": 0,
+      "value": "Passwort vergessen | WiseMapping"
+    }
+  ],
+  "forgot.register": [
+    {
+      "type": 0,
+      "value": "Wiederherstellungslink senden"
+    }
+  ],
+  "forgot.success.desc": [
+    {
+      "type": 0,
+      "value": "Wir haben Ihnen eine E-Mail gesendet, mit der Sie Ihr Passwort zurücksetzen können. Sie sollten es in den nächsten Minuten erhalten."
+    }
+  ],
+  "forgot.success.title": [
+    {
+      "type": 0,
+      "value": "Ihr temporäres Passwort wurde gesendet."
+    }
+  ],
+  "forgot.title": [
+    {
+      "type": 0,
+      "value": "Setze dein Passwort zurück"
+    }
+  ],
+  "forgotsuccess.page-title": [
+    {
+      "type": 0,
+      "value": "Passwort wiederhergestellt | WiseMapping"
+    }
+  ],
+  "header.donthaveaccount": [
+    {
+      "type": 0,
+      "value": "Sie haben kein Konto?"
+    }
+  ],
+  "header.haveaccount": [
+    {
+      "type": 0,
+      "value": "Sie haben bereits ein Konto?"
+    }
+  ],
+  "help.support": [
+    {
+      "type": 0,
+      "value": "Unterstützung"
+    }
+  ],
+  "history.no-changes": [
+    {
+      "type": 0,
+      "value": "Es sind keine Änderungen verfügbar"
+    }
+  ],
+  "import.button": [
+    {
+      "type": 0,
+      "value": "Erstellen"
+    }
+  ],
+  "import.description": [
+    {
+      "type": 0,
+      "value": "Sie können Karten von WiseMapping oder Freemind in Ihre Kartenliste importieren. Wählen Sie die Datei aus, die Sie importieren möchten."
+    }
+  ],
+  "import.error-file": [
+    {
+      "type": 0,
+      "value": "Die Dateierweiterung ist ungültig"
+    }
+  ],
+  "import.title": [
+    {
+      "type": 0,
+      "value": "Importieren Sie vorhandene Mindmaps"
+    }
+  ],
+  "info.basic-info": [
+    {
+      "type": 0,
+      "value": "Basisinformation"
+    }
+  ],
+  "info.button": [
+    {
+      "type": 0,
+      "value": "Akzeptieren"
+    }
+  ],
+  "info.creation-time": [
+    {
+      "type": 0,
+      "value": "Erstellungsdatum"
+    }
+  ],
+  "info.creator": [
+    {
+      "type": 0,
+      "value": "Schöpfer"
+    }
+  ],
+  "info.description": [
+    {
+      "type": 0,
+      "value": "Beschreibung"
+    }
+  ],
+  "info.description-msg": [
+    {
+      "type": 0,
+      "value": "Indem Sie die Karte veröffentlichen, machen Sie sie für jeden im Internet sichtbar."
+    }
+  ],
+  "info.modified-time": [
+    {
+      "type": 0,
+      "value": "Zuletzt geändertes Datum"
+    }
+  ],
+  "info.modified-tny": [
+    {
+      "type": 0,
+      "value": "Zuletzt geändert durch"
+    }
+  ],
+  "info.name": [
+    {
+      "type": 0,
+      "value": "Name"
+    }
+  ],
+  "info.public-visibility": [
+    {
+      "type": 0,
+      "value": "Öffentlich sichtbar"
+    }
+  ],
+  "info.sharing": [
+    {
+      "type": 0,
+      "value": "Teilen"
+    }
+  ],
+  "info.starred": [
+    {
+      "type": 0,
+      "value": "Markiert"
+    }
+  ],
+  "info.title": [
+    {
+      "type": 0,
+      "value": "Die Info"
+    }
+  ],
+  "label.add-button": [
+    {
+      "type": 0,
+      "value": "Etikett hinzufügen"
+    }
+  ],
+  "label.add-for": [
+    {
+      "type": 0,
+      "value": "Beschriftungen für Karten bearbeiten:"
+    }
+  ],
+  "label.add-placeholder": [
+    {
+      "type": 0,
+      "value": "Titel des Labels"
+    }
+  ],
+  "label.change-color": [
+    {
+      "type": 0,
+      "value": "Etikettenfarbe ändern"
+    }
+  ],
+  "label.delete-description": [
+    {
+      "type": 0,
+      "value": "gelöscht, einschließlich der Zuordnungen zu allen vorhandenen Karten. Möchtest du fortfahren?"
+    }
+  ],
+  "label.delete-title": [
+    {
+      "type": 0,
+      "value": "Bestätigen Sie das Löschen des Labels"
+    }
+  ],
+  "label.description": [
+    {
+      "type": 0,
+      "value": "Verwenden Sie Labels, um Ihre Karten zu organisieren."
+    }
+  ],
+  "label.title": [
+    {
+      "type": 0,
+      "value": "Etikett hinzufügen"
+    }
+  ],
+  "language.change": [
+    {
+      "type": 0,
+      "value": "Sprache ändern"
+    }
+  ],
+  "language.help": [
+    {
+      "type": 0,
+      "value": "Hilfe beim Übersetzen"
+    }
+  ],
+  "login.desc": [
+    {
+      "type": 0,
+      "value": "Melde dich in deinem Konto an"
+    }
+  ],
+  "login.email": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "login.error": [
+    {
+      "type": 0,
+      "value": "Die eingegebene E-Mail-Adresse oder das eingegebene Passwort ist ungültig."
+    }
+  ],
+  "login.forgotpwd": [
+    {
+      "type": 0,
+      "value": "Passwort vergessen ?"
+    }
+  ],
+  "login.hsqldbcofig": [
+    {
+      "type": 0,
+      "value": "Obwohl HSQLDB während der Installation standardmäßig mit WiseMapping gebündelt wird, empfehlen wir diese Datenbank nicht für den Produktionseinsatz. Bitte erwägen Sie stattdessen die Verwendung von MySQL 5.7. Weitere Informationen zur Konfiguration von MySQL finden Sie hier"
+    }
+  ],
+  "login.page-title": [
+    {
+      "type": 0,
+      "value": "Anmelden | WiseMapping"
+    }
+  ],
+  "login.password": [
+    {
+      "type": 0,
+      "value": "Passwort"
+    }
+  ],
+  "login.remberme": [
+    {
+      "type": 0,
+      "value": "Behalte mich in Erinnerung"
+    }
+  ],
+  "login.signin": [
+    {
+      "type": 0,
+      "value": "Anmelden"
+    }
+  ],
+  "login.signup": [
+    {
+      "type": 0,
+      "value": "Anmeldung"
+    }
+  ],
+  "login.title": [
+    {
+      "type": 0,
+      "value": "Herzlich willkommen"
+    }
+  ],
+  "login.userinactive": [
+    {
+      "type": 0,
+      "value": "Entschuldigung, Ihr Konto wurde noch nicht aktiviert. Sie erhalten eine Benachrichtigungs-E-Mail, wenn es aktiv wird. Bleiben Sie dran!."
+    }
+  ],
+  "map.creator": [
+    {
+      "type": 0,
+      "value": "Schöpfer"
+    }
+  ],
+  "map.delete-selected": [
+    {
+      "type": 0,
+      "value": "Ausgewählte löschen"
+    }
+  ],
+  "map.last-update": [
+    {
+      "type": 0,
+      "value": "Letztes Update"
+    }
+  ],
+  "map.more-actions": [
+    {
+      "type": 0,
+      "value": "Mehr Aktionen"
+    }
+  ],
+  "map.name": [
+    {
+      "type": 0,
+      "value": "Name"
+    }
+  ],
+  "map.tooltip-add": [
+    {
+      "type": 0,
+      "value": "Label zu Ausgewähltem hinzufügen"
+    }
+  ],
+  "maps.choose-file": [
+    {
+      "type": 0,
+      "value": "Wählen Sie eine Datei"
+    }
+  ],
+  "maps.create-tooltip": [
+    {
+      "type": 0,
+      "value": "Erstellen Sie eine neue Mindmap"
+    }
+  ],
+  "maps.empty-result": [
+    {
+      "type": 0,
+      "value": "Kein passender Datensatz mit den aktuellen Filterkriterien gefunden."
+    }
+  ],
+  "maps.import-desc": [
+    {
+      "type": 0,
+      "value": "Import aus anderen Tools"
+    }
+  ],
+  "maps.modified": [
+    {
+      "type": 0,
+      "value": "Geändert"
+    }
+  ],
+  "maps.modified-by": [
+    {
+      "type": 0,
+      "value": "Angepasst von"
+    }
+  ],
+  "maps.modified-by-desc": [
+    {
+      "type": 0,
+      "value": "Geändert von "
+    },
+    {
+      "type": 1,
+      "value": "by"
+    },
+    {
+      "type": 0,
+      "value": " am "
+    },
+    {
+      "type": 1,
+      "value": "on"
+    }
+  ],
+  "maps.nav-all": [
+    {
+      "type": 0,
+      "value": "Alle"
+    }
+  ],
+  "maps.nav-onwned": [
+    {
+      "type": 0,
+      "value": "Besitz"
+    }
+  ],
+  "maps.nav-public": [
+    {
+      "type": 0,
+      "value": "Allgemein"
+    }
+  ],
+  "maps.nav-shared": [
+    {
+      "type": 0,
+      "value": "Mit mir geteilt"
+    }
+  ],
+  "maps.nav-starred": [
+    {
+      "type": 0,
+      "value": "Markiert"
+    }
+  ],
+  "maps.page-title": [
+    {
+      "type": 0,
+      "value": "Meine Karten | WiseMapping"
+    }
+  ],
+  "maps.revert": [
+    {
+      "type": 0,
+      "value": "Zurückkehren"
+    }
+  ],
+  "maps.search-action": [
+    {
+      "type": 0,
+      "value": "Suche ..."
+    }
+  ],
+  "maps.tooltip-open": [
+    {
+      "type": 0,
+      "value": "Zur Ausgabe geöffnet"
+    }
+  ],
+  "maps.tooltip-starred": [
+    {
+      "type": 0,
+      "value": "Markiert"
+    }
+  ],
+  "maps.view": [
+    {
+      "type": 0,
+      "value": "Aussicht"
+    }
+  ],
+  "menu.account": [
+    {
+      "type": 0,
+      "value": "Konto"
+    }
+  ],
+  "menu.change-password": [
+    {
+      "type": 0,
+      "value": "Kennwort ändern"
+    }
+  ],
+  "menu.signout": [
+    {
+      "type": 0,
+      "value": "Austragen"
+    }
+  ],
+  "publish.button": [
+    {
+      "type": 0,
+      "value": "Akzeptieren"
+    }
+  ],
+  "publish.checkbox": [
+    {
+      "type": 0,
+      "value": "Aktivieren Sie die öffentliche Freigabe"
+    }
+  ],
+  "publish.description": [
+    {
+      "type": 0,
+      "value": "Indem Sie die Karte veröffentlichen, machen Sie sie für jeden im Internet sichtbar."
+    }
+  ],
+  "publish.embedded": [
+    {
+      "type": 0,
+      "value": "Eingebettet"
+    }
+  ],
+  "publish.embedded-msg": [
+    {
+      "type": 0,
+      "value": "Kopieren Sie dieses Code-Snippet, um es in Ihren Blog oder Ihre Seite einzubetten:"
+    }
+  ],
+  "publish.public-url": [
+    {
+      "type": 0,
+      "value": "Öffentliche URL"
+    }
+  ],
+  "publish.public-url-msg": [
+    {
+      "type": 0,
+      "value": "Kopieren Sie den folgenden Link und fügen Sie ihn ein, um Ihre Karte mit Kollegen zu teilen:"
+    }
+  ],
+  "publish.title": [
+    {
+      "type": 0,
+      "value": "Veröffentlichen"
+    }
+  ],
+  "registation.success-title": [
+    {
+      "type": 0,
+      "value": "Registrierung erfolgreich | WiseMapping"
+    }
+  ],
+  "registration.desc": [
+    {
+      "type": 0,
+      "value": "Die Anmeldung ist kostenlos und nehmen Sie sich einen Moment Zeit"
+    }
+  ],
+  "registration.email": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "registration.firstname": [
+    {
+      "type": 0,
+      "value": "Vorname"
+    }
+  ],
+  "registration.lastname": [
+    {
+      "type": 0,
+      "value": "Nachname"
+    }
+  ],
+  "registration.password": [
+    {
+      "type": 0,
+      "value": "Passwort"
+    }
+  ],
+  "registration.register": [
+    {
+      "type": 0,
+      "value": "Registrieren"
+    }
+  ],
+  "registration.success.desc": [
+    {
+      "type": 0,
+      "value": "Klicken Sie unten auf die Schaltfläche „Anmelden“ und beginnen Sie mit der Erstellung von Mindmaps."
+    }
+  ],
+  "registration.termandconditions": [
+    {
+      "type": 0,
+      "value": "Kundenbedingungen: Bitte überprüfen Sie die WiseMapping-Kontoinformationen, die Sie oben eingegeben haben, und sehen Sie sich die Kundenbedingungen hier an. Indem Sie unten auf „Registrieren“ klicken, stimmen Sie den obigen Kundenbedingungen und der Datenschutzrichtlinie zu"
+    }
+  ],
+  "registration.title": [
+    {
+      "type": 0,
+      "value": "Mitglied werden"
+    }
+  ],
+  "rename.description": [
+    {
+      "type": 0,
+      "value": "Bitte geben Sie den neuen Kartennamen und die Beschreibung ein."
+    }
+  ],
+  "rename.title": [
+    {
+      "type": 0,
+      "value": "Umbenennen"
+    }
+  ],
+  "resetpassword.success.title": [
+    {
+      "type": 0,
+      "value": "Ihr Konto wurde erfolgreich erstellt"
+    }
+  ],
+  "role.editor": [
+    {
+      "type": 0,
+      "value": "Editor"
+    }
+  ],
+  "role.owner": [
+    {
+      "type": 0,
+      "value": "Besitzer"
+    }
+  ],
+  "role.viewer": [
+    {
+      "type": 0,
+      "value": "Zuschauer"
+    }
+  ],
+  "share.add-button": [
+    {
+      "type": 0,
+      "value": "Hinzufügen"
+    }
+  ],
+  "share.add-message": [
+    {
+      "type": 0,
+      "value": "Nachricht hinzufügen"
+    }
+  ],
+  "share.can-edit": [
+    {
+      "type": 0,
+      "value": "Kann bearbeiten"
+    }
+  ],
+  "share.can-view": [
+    {
+      "type": 0,
+      "value": "Kann ansehen"
+    }
+  ],
+  "share.delete": [
+    {
+      "type": 0,
+      "value": "Mitbearbeiter löschen"
+    }
+  ],
+  "share.delete-description": [
+    {
+      "type": 0,
+      "value": "Laden Sie Personen ein, mit Ihnen bei der Erstellung Ihrer Midnmap zusammenzuarbeiten. Sie werden per E-Mail benachrichtigt."
+    }
+  ],
+  "share.delete-title": [
+    {
+      "type": 0,
+      "value": "Teilen Sie mit Menschen"
+    }
+  ],
+  "share.message": [
+    {
+      "type": 0,
+      "value": "Nachricht"
+    }
+  ]
+}
