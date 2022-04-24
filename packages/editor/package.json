@@ -1,6 +1,6 @@
 {
   "name": "@wisemapping/editor",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "main": "dist/editor.bundle.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
