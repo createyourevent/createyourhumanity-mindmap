@@ -8,6 +8,7 @@ import ActionDispatcher from '../../ActionDispatcher';
 import OptionModel from '../../model/control/OptionModel';
 import FloatingTip from '../../widget/FloatingTip';
 import { $msg } from '../../Messages';
+import LayoutModel from '../../model/LayoutModel';
 
 class OptionIcon extends Icon {
 
@@ -121,6 +122,10 @@ class OptionIcon extends Icon {
 
     getControlModel(): ControlModel {
         return this._optionModel;
+    }
+
+    getLayoutModel(): LayoutModel {
+      throw new Error('Method not implemented.');
     }
 
     static IMAGE_URL = OptionImage;

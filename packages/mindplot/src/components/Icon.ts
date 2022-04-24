@@ -21,6 +21,7 @@ import IconGroup from './IconGroup';
 import SizeType from './SizeType';
 import FeatureModel from './model/FeatureModel';
 import ControlModel from './model/ControlModel';
+import LayoutModel from './model/LayoutModel';
 
 abstract class Icon {
   protected _image: Image;
@@ -66,6 +67,8 @@ abstract class Icon {
   abstract getModel(): FeatureModel;
 
   abstract getControlModel(): ControlModel;
+
+  abstract getLayoutModel(): LayoutModel;
 
   static SIZE = 90;
 }

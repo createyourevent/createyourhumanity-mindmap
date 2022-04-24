@@ -24,6 +24,7 @@ import LinkModel from './model/LinkModel';
 import Topic from './Topic';
 import FeatureModel from './model/FeatureModel';
 import ControlModel from './model/ControlModel';
+import LayoutModel from './model/LayoutModel';
 
 class LinkIcon extends Icon {
   private _linksModel: FeatureModel;
@@ -79,6 +80,10 @@ class LinkIcon extends Icon {
   }
 
   getControlModel(): ControlModel {
+    throw new Error('Method not implemented.');
+  }
+
+  getLayoutModel(): LayoutModel {
     throw new Error('Method not implemented.');
   }
 

@@ -8,6 +8,7 @@ import TextareaModel from '../../model/control/TextareaModel';
 import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
+import LayoutModel from '../../model/LayoutModel';
 
 class TextareaIcon extends Icon {
 
@@ -121,6 +122,10 @@ class TextareaIcon extends Icon {
 
     getControlModel(): ControlModel {
         return this._textareaModel;
+    }
+
+    getLayoutModel(): LayoutModel {
+      throw new Error('Method not implemented.');
     }
 
     static IMAGE_URL = TextareaImage;

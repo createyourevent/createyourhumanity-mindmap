@@ -30,6 +30,7 @@ import Icon from './Icon';
 import SizeType from './SizeType';
 import FeatureModel from './model/FeatureModel';
 import ControlModel from './model/ControlModel';
+import LayoutModel from './model/LayoutModel';
 
 const ORDER_BY_TYPE = new Map<string, number>();
 ORDER_BY_TYPE.set('icon', 0);
@@ -103,7 +104,9 @@ class IconGroup {
 
     icon.setGroup(this);
     icons.push(icon);
-    if(type === 'control') {
+    if (type === 'layout') {
+      this._icons = icons.sort((a, b) => ORDER_BY_TYPE.get(a.getLayoutModel().getType()) - ORDER_BY_TYPE.get(b.getLayoutModel().getType()));
+    } else if (type === 'control') {
       this._icons = icons.sort((a, b) => ORDER_BY_TYPE.get(a.getControlModel().getType()) - ORDER_BY_TYPE.get(b.getControlModel().getType()));
     } else {
       this._icons = icons.sort((a, b) => ORDER_BY_TYPE.get(a.getModel().getType()) - ORDER_BY_TYPE.get(b.getModel().getType()));
@@ -129,6 +132,31 @@ class IconGroup {
 
     const icon = this._findIconFromControlModel(controlModel);
     this._removeIcon(icon);
+  }
+
+  removeIconByLayoutModel(layoutModel: LayoutModel) {
+    $assert(layoutModel, 'layoutModel can not be null');
+
+    const icon = this._findIconFromLayoutModel(layoutModel);
+    this._removeIcon(icon);
+  }
+
+  private _findIconFromLayoutModel(iconModel: LayoutModel) {
+    let result = null;
+
+    this._icons.forEach((icon) => {
+      const elModel = icon.getLayoutModel();
+
+      if (elModel.getId() === iconModel.getId()) {
+        result = icon;
+      }
+    });
+
+    if (result == null) {
+      throw new Error(`Icon can no be found:${iconModel.getId()} Icons:${this._icons}`);
+    }
+
+    return result;
   }
 
   private _findIconFromControlModel(iconModel: ControlModel) {

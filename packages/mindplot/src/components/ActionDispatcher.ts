@@ -86,6 +86,12 @@ abstract class ActionDispatcher extends Events {
 
   abstract removeControlFromTopic(topicId: number, featureId: string): void;
 
+  abstract addLayoutToTopic(topicId: number, type: string, attributes: object): void;
+
+  abstract changeLayoutToTopic(topicId: number, featureId: string, attributes: object): void;
+
+  abstract removeLayoutFromTopic(topicId: number, featureId: string): void;
+
   static setInstance = (dispatcher: ActionDispatcher) => {
     this._instance = dispatcher;
   };

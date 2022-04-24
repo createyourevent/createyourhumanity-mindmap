@@ -58,6 +58,8 @@ import CentralTopic from './CentralTopic';
 import FeatureType from './model/FeatureType';
 import TopicControlFactory from './ControlFeature';
 import ControlType from './model/ControlType';
+import LayoutType from './model/LayoutType';
+import TopicLayoutFactory from './LayoutFeature';
 
 class Designer extends Events {
   private _mindmap: Mindmap;
@@ -964,6 +966,33 @@ class Designer extends Events {
         });
       } else if(type == 'radiogroup') {
         this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Radiogroup.id as ControlType, {
+          text: type,
+        });
+      }
+    }
+  }
+
+  addLayout(type: string): void {
+    const topicsIds = this.getModel().filterTopicsIds();
+    if (topicsIds.length > 0) {
+      if (type === 'container') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Container.id as LayoutType, {
+          text: type,
+        });
+      } else if (type === 'row') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Row.id as LayoutType, {
+          text: type,
+        });
+      } else if (type === 'column') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Column.id as LayoutType, {
+          text: type,
+        });
+      } else if (type === 'title') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Title.id as LayoutType, {
+          text: type,
+        });
+      } else if (type === 'hr') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Hr.id as LayoutType, {
           text: type,
         });
       }

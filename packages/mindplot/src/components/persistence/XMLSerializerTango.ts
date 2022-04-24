@@ -27,6 +27,8 @@ import XMLMindmapSerializer from './XMLMindmapSerializer';
 import FeatureType from '../model/FeatureType';
 import ControlModelFactory from '../model/ControlModelFactory';
 import ControlType from '../model/ControlType';
+import LayoutModelFactory from '../model/LayoutModelFactory';
+import LayoutType from '../model/LayoutType';
 
 class XMLSerializerTango implements XMLMindmapSerializer {
   private static MAP_ROOT_NODE = 'map';
@@ -211,6 +213,28 @@ class XMLSerializerTango implements XMLMindmapSerializer {
         }
       }
       parentTopic.appendChild(controlDom);
+    });
+
+    // Serialize layouts ...
+    const layouts = topic.getLayout();
+    layouts.forEach((layout) => {
+        const layoutType = layout.getType();
+        const layoutDom = document.createElement(layoutType);
+        const attributes = layout.getAttributes();
+  
+        const attributesKeys = Object.keys(attributes);
+        for (let attrIndex = 0; attrIndex < attributesKeys.length; attrIndex++) {
+          const key = attributesKeys[attrIndex];
+          const value = attributes[key];
+          if (key === 'text') {
+            const cdata = document.createCDATASection(this._rmXmlInv(value));
+            layoutDom.appendChild(cdata);
+          } else {
+            layoutDom.setAttribute(key, this._rmXmlInv(value));
+          }
+        }
+        parentTopic.appendChild(layoutDom);
+      //}
     });
 
     // CHILDREN TOPICS
@@ -459,8 +483,27 @@ class XMLSerializerTango implements XMLMindmapSerializer {
            const controlType = elem.tagName as ControlType;
            const control = ControlModelFactory.createModel(controlType, attributes);
            topic.addControl(control);
-         }  
-        
+         } else if (LayoutModelFactory.isSupported(elem.tagName)) {
+          // Load attributes ...
+          const namedNodeMap = elem.attributes;
+          const attributes: Record<string, string> = {};
+
+          for (let j = 0; j < namedNodeMap.length; j++) {
+            const attribute = namedNodeMap.item(j);
+            attributes[attribute.name] = attribute.value;
+          }
+
+          // Has text node ?.
+          const textAttr = XMLSerializerTango._deserializeTextAttr(elem);
+          if (textAttr) {
+            attributes.text = textAttr;
+          }
+
+          // Create a new element ....
+          const layoutType = elem.tagName as LayoutType;
+          const layout = LayoutModelFactory.createModel(layoutType, attributes);
+          topic.addLayout(layout);
+        }
       }
     });
 

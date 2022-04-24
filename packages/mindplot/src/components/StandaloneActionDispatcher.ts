@@ -39,6 +39,10 @@ import ChangeControlToTopicCommand from './commands/ChangeControlToTopicCommand'
 import AddControlToTopicCommand from './commands/AddControlToTopicCommand';
 import RemoveControlFromTopicCommand from './commands/RemoveControlFromTopicCommand';
 import ControlType from './model/ControlType';
+import LayoutType from './model/LayoutType';
+import AddLayoutToTopicCommand from './commands/AddLayoutToTopicCommand';
+import ChangeLayoutToTopicCommand from './commands/ChangeLayoutToTopicCommand';
+import RemoveLayoutFromTopicCommand from './commands/RemoveLayoutFromTopicCommand';
 
 class StandaloneActionDispatcher extends ActionDispatcher {
   private _actionRunner: DesignerActionRunner;
@@ -266,6 +270,11 @@ class StandaloneActionDispatcher extends ActionDispatcher {
     this.execute(command);
   }
 
+  addLayoutToTopic(topicId: number, layoutType: LayoutType, attributes) {
+    const command = new AddLayoutToTopicCommand(topicId, layoutType, attributes);
+    this.execute(command);
+  }
+
   /** */
   changeFeatureToTopic(topicId: number, featureId: number, attributes) {
     const command = new ChangeFeatureToTopicCommand(topicId, featureId, attributes);
@@ -277,6 +286,12 @@ class StandaloneActionDispatcher extends ActionDispatcher {
     const command = new ChangeControlToTopicCommand(topicId, featureId, attributes);
     this.execute(command);
   }
+
+    /** */
+    changeLayoutToTopic(topicId: number, featureId: string, attributes) {
+      const command = new ChangeLayoutToTopicCommand(topicId, featureId, attributes);
+      this.execute(command);
+    }
   
 
   /** */
@@ -290,6 +305,12 @@ class StandaloneActionDispatcher extends ActionDispatcher {
     const command = new RemoveControlFromTopicCommand(topicId, controlId);
     this.execute(command);
   }
+
+    /** */
+    removeLayoutFromTopic(topicId: number, layoutId: string) {
+      const command = new RemoveLayoutFromTopicCommand(topicId, layoutId);
+      this.execute(command);
+    }
 
   /** */
   execute(command: Command) {

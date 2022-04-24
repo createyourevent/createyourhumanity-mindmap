@@ -25,6 +25,9 @@ import FeatureType from './FeatureType';
 import ControlModel from './ControlModel';
 import ControlType from './ControlType';
 import ControlModelFactory from './ControlModelFactory';
+import LayoutModel from './LayoutModel';
+import LayoutType from './LayoutType';
+import LayoutModelFactory from './LayoutModelFactory';
 
 class NodeModel extends INodeModel {
   private _properties: Record<string, string | number | boolean>;
@@ -35,6 +38,8 @@ class NodeModel extends INodeModel {
   private _features: FeatureModel[];
 
   private _controls: ControlModel[];
+
+  private _layouts: LayoutModel[];
 
   // eslint-disable-next-line no-use-before-define
   private _parent: NodeModel | null;
@@ -52,6 +57,7 @@ class NodeModel extends INodeModel {
     this._children = [];
     this._features = [];
     this._controls = [];
+    this._layouts = [];
   }
 
   /**
@@ -144,8 +150,37 @@ class NodeModel extends INodeModel {
     return result[0];
   }
 
+  createLayout(type: LayoutType, attributes): LayoutModel {
+    return LayoutModelFactory.createModel(type, attributes);
+  }
 
-  
+  addLayout(layout: LayoutModel) {
+    $assert(layout, 'layout can not be null');
+    this._layouts.push(layout);
+  }
+
+  getLayout(): LayoutModel[] {
+    return this._layouts;
+  }
+
+  removeLayout(layout: LayoutModel): void {
+    $assert(layout, 'layout can not be null');
+    const size = this._layouts.length;
+    this._layouts = this._layouts.filter((f) => layout.getId() !== f.getId());
+    $assert(size - 1 === this._layouts.length, 'Could not be removed ...');
+  }
+
+  findLayoutByType(type: string): LayoutModel[] {
+    $assert(type, 'type can not be null');
+    return this._layouts.filter((layout) => layout.getType() === type);
+  }
+
+  findLayoutById(id: string): LayoutModel {
+    $assert($defined(id), 'id can not be null');
+    const result = this._layouts.filter((layout) => layout.getId() === id);
+    $assert(result.length === 1, `Layout could not be found:${id}`);
+    return result[0];
+  }
 
   getPropertiesKeys() {
     return Object.keys(this._properties);

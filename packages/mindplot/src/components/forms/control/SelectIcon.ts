@@ -8,6 +8,7 @@ import SelectModel from '../../model/control/SelectModel';
 import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
+import LayoutModel from '../../model/LayoutModel';
 
 class SelectIcon extends Icon {
 
@@ -122,6 +123,10 @@ class SelectIcon extends Icon {
 
     getControlModel(): ControlModel {
         return this._selectModel;
+    }
+
+    getLayoutModel(): LayoutModel {
+      throw new Error('Method not implemented.');
     }
 
     static IMAGE_URL = SelectImage;

@@ -31,6 +31,7 @@ import IMenu from './IMenu';
 import { $msg } from '@wisemapping/mindplot';
 import TopicHtmlPanel from './TopicHtmlPanel';
 import TopicHtmlControlPanel from './TopicHtmlControlPanel';
+import TopicHtmlLayoutPanel from './TopicHtmlLayoutPanel';
 
 class Menu extends IMenu {
   constructor(designer: Designer, containerId: string, readOnly = false, baseUrl = '') {
@@ -281,6 +282,32 @@ class Menu extends IMenu {
             };
             this._toolbarElems.push(new TopicHtmlControlPanel('topicHtmlControl', topicHtmlControlModel));
             Menu._registerTooltip('topicHtmlControl', $msg('TOPIC_HTML_CONTROL'));
+
+
+            //Create Html Layout Panel ...
+            const topicHtmlLayoutModel = {
+              getValue() {
+                const nodes = designerModel.filterSelectedTopics();
+                let result = null;
+                for (let i = 0; i < nodes.length; i++) {
+                  const htmlType = nodes[i].getHtmlType();
+                  if (result != null && result !== htmlType) {
+                    result = null;
+                    break;
+                  }
+                  result = htmlType;
+                }
+                return result;
+              },
+              setValue(value: string) {
+                designer.addLayout(value);
+              },
+            };
+            this._toolbarElems.push(new TopicHtmlLayoutPanel('topicHtmlLayoutControl', topicHtmlLayoutModel));
+            Menu._registerTooltip('topicHtmlLayoutControl', $msg('TOPIC_HTML_LAYOUT'));
+
+
+
       
 
             

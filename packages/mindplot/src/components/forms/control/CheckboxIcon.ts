@@ -8,6 +8,7 @@ import CheckboxModel from '../../model/control/CheckboxModel';
 import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
+import LayoutModel from '../../model/LayoutModel';
 
 class CheckboxIcon extends Icon {
 
@@ -122,6 +123,10 @@ class CheckboxIcon extends Icon {
 
     getControlModel(): ControlModel {
         return this._checkboxModel;
+    }
+
+    getLayoutModel(): LayoutModel {
+      throw new Error('Method not implemented.');
     }
 
     static IMAGE_URL = CheckboxImage;

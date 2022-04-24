@@ -25,6 +25,8 @@ import HistorySvg from '../../../images/history.svg';
 import PrintSvg from '../../../images/print.svg';
 import HtmlFormPng from '../../../images/html/form.png';
 import Html from '../../../images/html/html.png';
+import HtmlLayout from '../../../images/html/layout/layout.png';
+
 import './global-styled.css';
 
 import { HeaderContainer, ToolbarButton, ToolbarButtonExt, ToolbarRightContainer } from './styled';
@@ -117,6 +119,9 @@ export default function Toolbar({
                             </ToolbarButtonExt>
                             <ToolbarButtonExt id="topicHtmlControl" className="buttonExtOn">
                                 <img src={Html} />
+                            </ToolbarButtonExt>
+                            <ToolbarButtonExt id="topicHtmlLayoutControl" className="buttonExtOn">
+                                <img src={HtmlLayout} />
                             </ToolbarButtonExt>
                         </div>
                         <div id="separator" className="buttonContainer"></div>

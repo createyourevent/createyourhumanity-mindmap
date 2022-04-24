@@ -9,6 +9,7 @@ import ActionDispatcher from '../../ActionDispatcher';
 import FloatingTip from '../../widget/FloatingTip';
 import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
+import LayoutModel from '../../model/LayoutModel';
 
 class TextfieldIcon extends Icon {
 
@@ -124,6 +125,10 @@ class TextfieldIcon extends Icon {
 
     getControlModel(): ControlModel {
         return this._textfieldModel;
+    }
+
+    getLayoutModel(): LayoutModel {
+      throw new Error('Method not implemented.');
     }
 
     static IMAGE_URL = TextFieldImage;

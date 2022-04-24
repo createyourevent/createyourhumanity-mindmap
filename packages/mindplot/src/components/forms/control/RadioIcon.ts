@@ -8,6 +8,7 @@ import RadioModel from '../../model/control/RadioModel';
 import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
+import LayoutModel from '../../model/LayoutModel';
 
 class RadioIcon extends Icon {
 
@@ -122,6 +123,10 @@ class RadioIcon extends Icon {
 
     getControlModel(): ControlModel {
         return this._radioModel;
+    }
+
+    getLayoutModel(): LayoutModel {
+      throw new Error('Method not implemented.');
     }
 
     static IMAGE_URL = RadioImage;

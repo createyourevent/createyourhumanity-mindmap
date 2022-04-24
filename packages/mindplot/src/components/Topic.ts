@@ -57,6 +57,8 @@ import { result, size } from 'lodash';
 import RadiogroupModel from './model/control/RadiogroupModel';
 import OptionModel from './model/control/OptionModel';
 import RadioModel from './model/control/RadioModel';
+import LayoutModel from './model/LayoutModel';
+import TopicLayoutFactory from './LayoutFeature';
 
 const ICON_SCALING_FACTOR = 1.3;
 
@@ -393,6 +395,38 @@ abstract class Topic extends NodeGraph {
           } 
        } 
       });
+    } else if (model.getLayout().length > 0) {
+      // Load topic controls ...
+      const modelLayout = this.getModel();
+      const layoutsModel = modelLayout.getLayout();
+      layoutsModel.forEach((f) => {
+        const icon = TopicLayoutFactory.createIcon(this, f, this.isReadOnly());
+        switch(f.getType()) { 
+          case 'container': {  
+            result.addIcon(icon, f.getType() === TopicLayoutFactory.Container.id && !this.isReadOnly(), 'layout'); 
+            break;
+          } 
+          case 'row': {  
+            result.addIcon(icon, f.getType() === TopicLayoutFactory.Row.id && !this.isReadOnly(), 'layout');
+            break; 
+          } 
+          case 'column': {  
+            result.addIcon(icon, f.getType() === TopicLayoutFactory.Column.id && !this.isReadOnly(), 'layout');
+            break; 
+          } 
+          case 'title': {  
+            result.addIcon(icon, f.getType() === TopicLayoutFactory.Title.id && !this.isReadOnly(), 'layout');
+            break; 
+          } 
+          case 'hr': {  
+            result.addIcon(icon, f.getType() === TopicLayoutFactory.Hr.id && !this.isReadOnly(), 'layout');
+            break; 
+          } 
+          default: {  
+             break; 
+          } 
+       } 
+      });
     }
 
     return result;
@@ -476,6 +510,48 @@ abstract class Topic extends NodeGraph {
     }
     this.adjustShapes();
   }
+
+
+  addLayout(layoutModel: LayoutModel): Icon {
+    const iconGroup = this.getOrBuildIconGroup();
+    this.closeEditors();
+
+    // Update model ...
+    const model = this.getModel();
+    model.addLayout(layoutModel);
+
+    const result: Icon = TopicLayoutFactory.createIcon(this, layoutModel, this.isReadOnly());
+    iconGroup.addIcon(
+      result,
+      true,
+      'control'
+    );
+
+    this.adjustShapes();
+    return result;
+  }
+
+  findLayoutById(id: string) {
+    const model = this.getModel();
+    return model.findLayoutById(id);
+  }
+
+  /** */
+  removeLayout(layoutModel: LayoutModel): void {
+    $assert(layoutModel, 'layoutModel could not be null');
+
+    // Removing the icon from MODEL
+    const model = this.getModel();
+    model.removeLayout(layoutModel);
+
+    // Removing the icon from UI
+    const iconGroup = this.getIconGroup();
+    if ($defined(iconGroup)) {
+      iconGroup.removeIconByLayoutModel(layoutModel);
+    }
+    this.adjustShapes();
+  }
+
 
   addRelationship(relationship: Relationship) {
     this._relationships.push(relationship);

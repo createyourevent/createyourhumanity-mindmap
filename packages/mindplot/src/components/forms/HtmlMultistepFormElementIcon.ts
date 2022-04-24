@@ -6,6 +6,7 @@ import { $assert } from '@wisemapping/core-js';
 import ControlModel from '../model/ControlModel';
 import ActionDispatcher from '../ActionDispatcher';
 import HtmlFormModel from '../model/form/HtmlFormModel';
+import LayoutModel from '../model/LayoutModel';
 
 class HtmlMultistepFormElementIcon extends Icon {
     private _htmlElementModel: FeatureModel;
@@ -41,6 +42,10 @@ class HtmlMultistepFormElementIcon extends Icon {
       }
 
       getControlModel(): ControlModel {
+        throw new Error('Method not implemented.');
+      }
+
+      getLayoutModel(): LayoutModel {
         throw new Error('Method not implemented.');
       }
   
