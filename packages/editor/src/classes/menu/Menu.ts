@@ -308,7 +308,12 @@ class Menu extends IMenu {
 
 
 
-      
+              const formElem = $('#form');
+              this._addButton('form', false, false,
+                () => {
+                  this.addForm(formElem, designer, true);
+                });
+              Menu._registerTooltip('form', $msg('FORM'));
 
             
       this._addButton('addTopic', true, false, () => {

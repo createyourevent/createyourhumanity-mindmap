@@ -23,6 +23,7 @@ import ExportSvg from '../../../images/export.svg';
 import PublicSvg from '../../../images/public.svg';
 import HistorySvg from '../../../images/history.svg';
 import PrintSvg from '../../../images/print.svg';
+import HtmlTabsPng from '../../../images/html/tabs.png';
 import HtmlFormPng from '../../../images/html/form.png';
 import Html from '../../../images/html/html.png';
 import HtmlLayout from '../../../images/html/layout/layout.png';
@@ -114,8 +115,11 @@ export default function Toolbar({
                             </ToolbarButton>
                         </div>
                         <div id="html" className="buttonContainer">
-                            <ToolbarButtonExt id="topicHtml" className="buttonExtOn">
+                            <ToolbarButton id="form" className="buttonOn">
                                 <img src={HtmlFormPng} />
+                            </ToolbarButton>
+                            <ToolbarButtonExt id="topicHtml" className="buttonExtOn">
+                                <img src={HtmlTabsPng} />
                             </ToolbarButtonExt>
                             <ToolbarButtonExt id="topicHtmlControl" className="buttonExtOn">
                                 <img src={Html} />

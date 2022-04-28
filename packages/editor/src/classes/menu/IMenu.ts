@@ -77,6 +77,10 @@ class IMenu {
     }
   }
 
+  addForm(saveElem: JQuery, designer: Designer, saveHistory: boolean) {
+    designer.addHtml('form');  
+  }
+
   save(saveElem: JQuery, designer: Designer, saveHistory: boolean) {
     // Load map content ...
     const mindmap = designer.getMindmap();

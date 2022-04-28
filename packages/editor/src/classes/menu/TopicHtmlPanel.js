@@ -28,8 +28,6 @@ class TopicHtmlPanel extends ListToolbarPanel {
   buildPanel() {
     const content = $("<div class='toolbarPanel' id='topicHtmlPanel'></div>");
     content[0].innerHTML = `
-      <div id="form"><img src="${HtmlFormImage}" alt="Form">Form</div>
-      <hr/>
       <div id="tabs_form"><img src="${HtmlTabsFormImage}" alt="Tabs form">Tabs Form</div>
       <div id="tabs_plus"><img src="${TabsPlus}" alt="Tab">Tab</div>
       <hr/>
