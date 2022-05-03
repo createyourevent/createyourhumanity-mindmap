@@ -104,14 +104,7 @@ class IconGroup {
 
     icon.setGroup(this);
     icons.push(icon);
-    if (type === 'layout') {
-      this._icons = icons.sort((a, b) => ORDER_BY_TYPE.get(a.getLayoutModel().getType()) - ORDER_BY_TYPE.get(b.getLayoutModel().getType()));
-    } else if (type === 'control') {
-      this._icons = icons.sort((a, b) => ORDER_BY_TYPE.get(a.getControlModel().getType()) - ORDER_BY_TYPE.get(b.getControlModel().getType()));
-    } else {
-      this._icons = icons.sort((a, b) => ORDER_BY_TYPE.get(a.getModel().getType()) - ORDER_BY_TYPE.get(b.getModel().getType()));
-    }
-    
+    this._icons = icons; // .sort((a, b) => ORDER_BY_TYPE.get(a.getModel().getType()) - ORDER_BY_TYPE.get(b.getModel().getType()));
 
     // Add all the nodes back ...
     this._resize(this._icons.length);
