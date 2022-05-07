@@ -28,6 +28,10 @@ class RootedTreeSet {
     this._rootNodes = [];
   }
 
+  resetRootNodes(): void {
+    this._rootNodes = [];
+  }
+
   setRoot(root: Node) {
     $assert(root, 'root can not be null');
     this._rootNodes.push(this._decodate(root));

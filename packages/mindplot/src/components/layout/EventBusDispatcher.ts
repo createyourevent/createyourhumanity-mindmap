@@ -56,9 +56,13 @@ class EventBusDispatcher {
   }
 
   private _topicConnected(args: { parentNode: Topic, childNode: Topic }) {
-    this._layoutManager.connectNode(
-      args.parentNode.getId(), args.childNode.getId(), args.childNode.getOrder(),
-    );
+    const parent = this._layoutManager.find(args.parentNode.getId(), false);
+    const child = this._layoutManager.find(args.childNode.getId(), false);
+    if(!child._parent) {
+      this._layoutManager.connectNode(
+        args.parentNode.getId(), args.childNode.getId(), args.childNode.getOrder(),
+      );
+    }
   }
 
   private _childShrinked(node: Topic) {
@@ -68,6 +72,7 @@ class EventBusDispatcher {
   private _topicAdded(node: Topic) {
     // Central topic must not be added twice ...
     if (node.getId() !== 0) {
+      if(this._layoutManager.find(node.getId(), false) === null || this._layoutManager.find(node.getId(), false) === undefined)
       this._layoutManager.addNode(node.getId(), { width: 10, height: 10 }, node.getPosition());
       this._layoutManager.updateShrinkState(node.getId(), node.areChildrenShrunken());
     }
