@@ -59,8 +59,8 @@ class LayoutManager extends Events {
     node.setShrunken(value);
   }
 
-  find(id: number): Node {
-    return this._treeSet.find(id);
+  find(id: number, validate = true): Node {
+    return this._treeSet.find(id, validate);
   }
 
   /**

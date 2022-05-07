@@ -34,7 +34,7 @@ import { HeaderContainer, ToolbarButton, ToolbarButtonExt, ToolbarRightContainer
 import ActionButton from '../action-button';
 import { EditorRenderMode } from '@wisemapping/mindplot';
 
-export type ToolbarActionType = 'export' | 'publish' | 'history' | 'print' | 'share';
+export type ToolbarActionType = 'export' | 'publish' | 'history' | 'print' | 'share' | 'reset';
 
 export type ToolbarPropsType = {
     editorMode: EditorRenderMode;
