@@ -995,6 +995,10 @@ class Designer extends Events {
         this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Hr.id as LayoutType, {
           text: type,
         });
+      } else if (type === 'text') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Text.id as LayoutType, {
+          text: type,
+        });
       }
     }
   }

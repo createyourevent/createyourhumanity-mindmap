@@ -22,6 +22,7 @@ import RowIcon from './forms/layout/RowIcon';
 import ColumnIcon from './forms/layout/ColumnIcon';
 import TitleIcon from './forms/layout/TitleIcon';
 import HrIcon from './forms/layout/HrIcon';
+import TextIcon from './forms/layout/TextIcon';
 
 
 const TopicLayoutFactory = {
@@ -48,6 +49,11 @@ const TopicLayoutFactory = {
   Hr: {
     id: 'hr',
     icon: HrIcon,
+  },
+
+  Text: {
+    id: 'text',
+    icon: TextIcon,
   },
 
   createIcon(topic, model, readOnly) {

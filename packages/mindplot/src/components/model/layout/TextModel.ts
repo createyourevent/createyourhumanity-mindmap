@@ -15,6 +15,13 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-type LayoutType = 'container' | 'row' | 'column' | 'title' | 'hr' | 'text';
+import { $assert } from '@wisemapping/core-js';
+import LayoutModel from '../LayoutModel';
 
-export default LayoutType;
+class TextModel extends LayoutModel {
+  constructor(attributes) {
+    super('text');
+  }
+}
+
+export default TextModel;

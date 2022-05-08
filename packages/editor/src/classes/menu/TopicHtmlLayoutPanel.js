@@ -18,9 +18,7 @@
 import $ from 'jquery';
 import ListToolbarPanel from './ListToolbarPanel';
 
-import HtmlLayoutContainer from '../../../assets/images/html/layout/container.png';
-import HtmlLayoutRow from '../../../assets/images/html/layout/row.png';
-import HtmlLayoutColumn from '../../../assets/images/html/layout/column.png';
+import HtmlLayoutText from '../../../assets/images/html/layout/text.png';
 import HtmlLayoutTitle from '../../../assets/images/html/layout/title.png';
 import HtmlLayoutHr from '../../../assets/images/html/layout/hr.png';
 
@@ -30,9 +28,7 @@ class TopicHtmlLayoutPanel extends ListToolbarPanel {
   buildPanel() {
     const content = $("<div class='toolbarPanel' id='topicHtmlLayout'></div>");
     content[0].innerHTML = `
-      <div id="container"><img src="${HtmlLayoutContainer}" alt="Container">Container</div>
-      <div id="row"><img src="${HtmlLayoutRow}" alt="Row">Row</div>
-      <div id="column"><img src="${HtmlLayoutColumn}" alt="Column">Column</div>
+      <div id="text"><img src="${HtmlLayoutText}" alt="Text">Text</div>
       <hr/>
       <div id="title"><img src="${HtmlLayoutTitle}" alt="Title">Title</div>
       <hr/>
