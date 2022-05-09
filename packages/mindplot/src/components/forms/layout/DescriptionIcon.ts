@@ -2,7 +2,7 @@ import TextImage from '../../../../assets/icons/html/layout/text.png';
 import Icon from '../../Icon';
 import Topic from '../../Topic';
 import { $assert } from '@wisemapping/core-js';
-import TextModel from '../../model/layout/TextModel';
+import DescriptionModel from '../../model/layout/DescriptionModel';
 import LayoutModel from '../../model/LayoutModel';
 import FeatureModel from '../../model/FeatureModel';
 import ActionDispatcher from '../../ActionDispatcher';
@@ -11,9 +11,9 @@ import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
 import ControlModel from '../../model/ControlModel';
 
-class TextIcon extends Icon {
+class DescriptionIcon extends Icon {
 
-    private _textModel: LayoutModel;
+    private _descriptionModel: LayoutModel;
 
     private _topic: Topic;
   
@@ -21,12 +21,12 @@ class TextIcon extends Icon {
 
     private _tip: FloatingTip;
     
-    constructor(topic: Topic, textModel: TextModel, readOnly: boolean) {
+    constructor(topic: Topic, descriptionModel: DescriptionModel, readOnly: boolean) {
         $assert(topic, 'topic can not be null');
-        $assert(textModel, 'titleModel can not be null');
+        $assert(descriptionModel, 'titleModel can not be null');
     
-        super(TextIcon.IMAGE_URL);
-        this._textModel = textModel;
+        super(DescriptionIcon.IMAGE_URL);
+        this._descriptionModel = descriptionModel;
         this._topic = topic;
         this._readOnly = readOnly;
 
@@ -64,7 +64,7 @@ class TextIcon extends Icon {
     _buildTooltipContent() {
       if ($('body').find('#popoverProperties').length === 1) {
         const text = $('body').find('#popoverProperties');
-        text.text(this._textModel.getKey());
+        text.text(this._descriptionModel.getKey());
         return text;
       }
       const result = $('<div id="popoverProperties"></div>').css({ padding: '5px', width: '250px' });
@@ -75,7 +75,7 @@ class TextIcon extends Icon {
 
     remove() {
         const actionDispatcher = ActionDispatcher.getInstance();
-        const controlId = this._textModel.getId();
+        const controlId = this._descriptionModel.getId();
         const topicId = this._topic.getId();
         actionDispatcher.removeLayoutFromTopic(topicId, controlId);
       }
@@ -89,7 +89,7 @@ class TextIcon extends Icon {
       }
 
     getLayoutModel(): LayoutModel {
-        return this._textModel;
+        return this._descriptionModel;
     }
 
     
@@ -97,4 +97,4 @@ class TextIcon extends Icon {
     static IMAGE_URL = TextImage;
   }
   
-  export default TextIcon;
+  export default DescriptionIcon;

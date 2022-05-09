@@ -968,6 +968,10 @@ class Designer extends Events {
         this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Radiogroup.id as ControlType, {
           text: type,
         });
+      } else if(type == 'calendar') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Calendar.id as ControlType, {
+          text: type,
+        });
       }
     }
   }
@@ -995,8 +999,8 @@ class Designer extends Events {
         this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Hr.id as LayoutType, {
           text: type,
         });
-      } else if (type === 'text') {
-        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Text.id as LayoutType, {
+      } else if (type === 'desc') {
+        this._actionDispatcher.addLayoutToTopic(topicsIds[0], TopicLayoutFactory.Description.id as LayoutType, {
           text: type,
         });
       }

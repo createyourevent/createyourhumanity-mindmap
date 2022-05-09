@@ -8,6 +8,7 @@ import RadioModel from './control/RadioModel';
 import CheckboxModel from './control/CheckboxModel';
 import RadiogroupModel from './control/RadiogroupModel';
 import OptionModel from './control/OptionModel';
+import CalendarModel from './control/CalendarModel';
 
 interface NodeById {
   id: ControlType,
@@ -36,6 +37,9 @@ class ControlModelFactory {
   }, {
     id: 'option',
     model: OptionModel,
+  }, {
+    id: 'calendar',
+    model: CalendarModel,
   }];
 
   static createModel(type: ControlType, attributes): ControlModel {
