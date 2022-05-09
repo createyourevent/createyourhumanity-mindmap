@@ -25,7 +25,7 @@ import HtmlControlRadio from '../../../assets/images/html/control/radio.png';
 import HtmlControlCheckbox from '../../../assets/images/html/control/checkbox.png';
 import HtmlControlOption from '../../../assets/images/html/control/option.png';
 import HtmlControlRadioGroup from '../../../assets/images/html/control/radiogroup.png';
-
+import HtmlControlCalendar from '../../../assets/images/html/control/calendar.png';
 class TopicHtmlControlPanel extends ListToolbarPanel {
   // eslint-disable-next-line class-methods-use-this
   buildPanel() {
@@ -40,7 +40,9 @@ class TopicHtmlControlPanel extends ListToolbarPanel {
       <div id="radiogroup"><img src="${HtmlControlRadioGroup}" alt="Radio group">Radio group</div>
       <div id="radio"><img src="${HtmlControlRadio}" alt="Radiobutton">Radiobutton</div>
       <hr/>
-      <div id="checkbox"><img src="${HtmlControlCheckbox}" alt="Checkbox">Checkbox</div>`
+      <div id="checkbox"><img src="${HtmlControlCheckbox}" alt="Checkbox">Checkbox</div>
+      <hr/>
+      <div id="calendar"><img src="${HtmlControlCalendar}" alt="Calendar">Calendar</div>`
     return content;
   }
 }

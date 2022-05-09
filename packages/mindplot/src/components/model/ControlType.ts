@@ -15,6 +15,6 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-type ControlType = 'textfield' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'radiogroup' | 'option';
+type ControlType = 'textfield' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'radiogroup' | 'option' | 'calendar';
 
 export default ControlType;

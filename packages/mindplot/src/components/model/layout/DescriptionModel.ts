@@ -18,10 +18,10 @@
 import { $assert } from '@wisemapping/core-js';
 import LayoutModel from '../LayoutModel';
 
-class TextModel extends LayoutModel {
+class DescriptionModel extends LayoutModel {
   constructor(attributes) {
-    super('text');
+    super('desc');
   }
 }
 
-export default TextModel;
+export default DescriptionModel;

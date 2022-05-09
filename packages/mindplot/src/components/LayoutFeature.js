@@ -22,7 +22,7 @@ import RowIcon from './forms/layout/RowIcon';
 import ColumnIcon from './forms/layout/ColumnIcon';
 import TitleIcon from './forms/layout/TitleIcon';
 import HrIcon from './forms/layout/HrIcon';
-import TextIcon from './forms/layout/TextIcon';
+import DescriptionIcon from './forms/layout/DescriptionIcon';
 
 
 const TopicLayoutFactory = {
@@ -51,9 +51,9 @@ const TopicLayoutFactory = {
     icon: HrIcon,
   },
 
-  Text: {
-    id: 'text',
-    icon: TextIcon,
+  Description: {
+    id: 'desc',
+    icon: DescriptionIcon,
   },
 
   createIcon(topic, model, readOnly) {
@@ -66,6 +66,6 @@ const TopicLayoutFactory = {
   },
 };
 
-TopicLayoutFactory._featuresMetadataById = [TopicLayoutFactory.Container, TopicLayoutFactory.Row, TopicLayoutFactory.Column, TopicLayoutFactory.Title, TopicLayoutFactory.Hr];
+TopicLayoutFactory._featuresMetadataById = [TopicLayoutFactory.Container, TopicLayoutFactory.Row, TopicLayoutFactory.Column, TopicLayoutFactory.Title, TopicLayoutFactory.Hr, TopicLayoutFactory.Description];
 
 export default TopicLayoutFactory;

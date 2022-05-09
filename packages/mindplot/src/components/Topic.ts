@@ -390,6 +390,10 @@ abstract class Topic extends NodeGraph {
             result.addIcon(icon, f.getType() === TopicControlFactory.Option.id && !this.isReadOnly(), 'control');
             break; 
           } 
+          case 'calendar': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Calendar.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
           default: {  
              break; 
           } 
@@ -402,6 +406,10 @@ abstract class Topic extends NodeGraph {
       layoutsModel.forEach((f) => {
         const icon = TopicLayoutFactory.createIcon(this, f, this.isReadOnly());
         switch(f.getType()) { 
+          case 'desc': {  
+            result.addIcon(icon, f.getType() === TopicLayoutFactory.Description.id && !this.isReadOnly(), 'layout');
+            break; 
+          } 
           case 'container': {  
             result.addIcon(icon, f.getType() === TopicLayoutFactory.Container.id && !this.isReadOnly(), 'layout'); 
             break;
@@ -417,7 +425,7 @@ abstract class Topic extends NodeGraph {
           case 'title': {  
             result.addIcon(icon, f.getType() === TopicLayoutFactory.Title.id && !this.isReadOnly(), 'layout');
             break; 
-          } 
+          }
           case 'hr': {  
             result.addIcon(icon, f.getType() === TopicLayoutFactory.Hr.id && !this.isReadOnly(), 'layout');
             break; 
@@ -524,7 +532,7 @@ abstract class Topic extends NodeGraph {
     iconGroup.addIcon(
       result,
       true,
-      'control'
+      'layout'
     );
 
     this.adjustShapes();

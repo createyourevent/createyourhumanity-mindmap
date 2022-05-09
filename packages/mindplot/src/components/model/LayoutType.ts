@@ -15,6 +15,6 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-type LayoutType = 'container' | 'row' | 'column' | 'title' | 'hr' | 'text';
+type LayoutType = 'container' | 'row' | 'column' | 'title' | 'hr' | 'desc';
 
 export default LayoutType;

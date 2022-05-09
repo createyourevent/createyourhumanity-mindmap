@@ -28,7 +28,7 @@ class TopicHtmlLayoutPanel extends ListToolbarPanel {
   buildPanel() {
     const content = $("<div class='toolbarPanel' id='topicHtmlLayout'></div>");
     content[0].innerHTML = `
-      <div id="text"><img src="${HtmlLayoutText}" alt="Text">Text</div>
+      <div id="desc"><img src="${HtmlLayoutText}" alt="Text">Text</div>
       <hr/>
       <div id="title"><img src="${HtmlLayoutTitle}" alt="Title">Title</div>
       <hr/>

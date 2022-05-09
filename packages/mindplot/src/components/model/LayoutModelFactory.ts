@@ -13,7 +13,7 @@ import RowModel from './layout/RowModel';
 import ColumnModel from './layout/ColumnModel';
 import TitleModel from './layout/TitleModel';
 import HrModel from './layout/HrModel';
-import TextModel from './layout/TextModel';
+import DescriptionModel from './layout/DescriptionModel';
 
 interface NodeById {
   id: LayoutType,
@@ -37,8 +37,8 @@ class LayoutModelFactory {
     id: 'hr',
     model: HrModel,
   }, {
-    id: 'text',
-    model: TextModel,
+    id: 'desc',
+    model: DescriptionModel,
   }];
 
   static createModel(type: LayoutType, attributes): LayoutModel {
