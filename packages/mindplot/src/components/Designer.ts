@@ -972,6 +972,26 @@ class Designer extends Events {
         this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Calendar.id as ControlType, {
           text: type,
         });
+      } else if(type == 'editor') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Editor.id as ControlType, {
+          text: type,
+        });
+      } else if(type == 'time') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Time.id as ControlType, {
+          text: type,
+        });
+      } else if(type == 'address') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Address.id as ControlType, {
+          text: type,
+        });
+      } else if(type == 'keywords') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Keywords.id as ControlType, {
+          text: type,
+        });
+      } else if(type == 'ratings') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Ratings.id as ControlType, {
+          text: type,
+        });
       }
     }
   }

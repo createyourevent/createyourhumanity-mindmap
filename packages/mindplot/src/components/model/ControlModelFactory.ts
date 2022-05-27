@@ -9,6 +9,11 @@ import CheckboxModel from './control/CheckboxModel';
 import RadiogroupModel from './control/RadiogroupModel';
 import OptionModel from './control/OptionModel';
 import CalendarModel from './control/CalendarModel';
+import EditorModel from './control/EditorModel';
+import TimeModel from './control/TimeModel';
+import AddressModel from './control/AddressModel';
+import KeywordsModel from './control/KeywordsModel';
+import RatingsModel from './control/RatingsModel';
 
 interface NodeById {
   id: ControlType,
@@ -40,6 +45,21 @@ class ControlModelFactory {
   }, {
     id: 'calendar',
     model: CalendarModel,
+  }, {
+    id: 'editor',
+    model: EditorModel,
+  }, {
+    id: 'time',
+    model: TimeModel,
+  }, {
+    id: 'address',
+    model: AddressModel,
+  }, {
+    id: 'keywords',
+    model: KeywordsModel,
+  }, {
+    id: 'ratings',
+    model: RatingsModel,
   }];
 
   static createModel(type: ControlType, attributes): ControlModel {

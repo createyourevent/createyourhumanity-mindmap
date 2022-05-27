@@ -73,6 +73,14 @@ abstract class INodeModel {
     return this.getProperty('text') as string;
   }
 
+  setVisible(visible: string): void {
+    this.putProperty('visible', visible);
+  }
+
+  getVisible(): string | undefined {
+    return this.getProperty('visible') as string;
+  }
+
   setPosition(x: number, y: number): void {
     this.putProperty('position', `{x:${x},y:${y}}`);
   }

@@ -59,6 +59,12 @@ import OptionModel from './model/control/OptionModel';
 import RadioModel from './model/control/RadioModel';
 import LayoutModel from './model/LayoutModel';
 import TopicLayoutFactory from './LayoutFeature';
+import AddressModel from './model/control/AddressModel';
+import CalendarModel from './model/control/CalendarModel';
+import EditorModel from './model/control/EditorModel';
+import KeywordsModel from './model/control/KeywordsModel';
+import RatingsModel from './model/control/RatingsModel';
+import TimeModel from './model/control/TimeModel';
 
 const ICON_SCALING_FACTOR = 1.3;
 
@@ -394,6 +400,26 @@ abstract class Topic extends NodeGraph {
             result.addIcon(icon, f.getType() === TopicControlFactory.Calendar.id && !this.isReadOnly(), 'control');
             break; 
           } 
+          case 'editor': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Editor.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
+          case 'time': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Time.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
+          case 'address': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Address.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
+          case 'keywords': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Keywords.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
+          case 'ratings': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Ratings.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
           default: {  
              break; 
           } 
@@ -721,6 +747,15 @@ abstract class Topic extends NodeGraph {
   getText(): string {
     const model = this.getModel();
     let result = model.getText();
+    if (!$defined(result)) {
+      result = TopicStyle.defaultText(this);
+    }
+    return result;
+  }
+
+  getVisible(): string {
+    const model = this.getModel();
+    let result = model.getVisible();
     if (!$defined(result)) {
       result = TopicStyle.defaultText(this);
     }
@@ -1113,6 +1148,90 @@ abstract class Topic extends NodeGraph {
             });
           }
           (properties[0] as CheckboxModel).setKey(value);
+        } else if(type === TopicControlFactory.Calendar.id) {
+          const controls = model.findControlByType(TopicControlFactory.Calendar.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Calendar.id, {
+              key: value,
+            });
+          }
+          (properties[0] as CalendarModel).setKey(value);
+        } else if(type === TopicControlFactory.Editor.id) {
+          const controls = model.findControlByType(TopicControlFactory.Editor.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Editor.id, {
+              key: value,
+            });
+          }
+          (properties[0] as EditorModel).setKey(value);
+        } else if(type === TopicControlFactory.Time.id) {
+          const controls = model.findControlByType(TopicControlFactory.Time.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Time.id, {
+              key: value,
+            });
+          }
+          (properties[0] as TimeModel).setKey(value);
+        } else if(type === TopicControlFactory.Time.id) {
+          const controls = model.findControlByType(TopicControlFactory.Address.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Address.id, {
+              key: value,
+            });
+          }
+          (properties[0] as AddressModel).setKey(value);
+        } else if(type === TopicControlFactory.Keywords.id) {
+          const controls = model.findControlByType(TopicControlFactory.Keywords.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Keywords.id, {
+              key: value,
+            });
+          }
+          (properties[0] as KeywordsModel).setKey(value);
+        } else if(type === TopicControlFactory.Keywords.id) {
+          const controls = model.findControlByType(TopicControlFactory.Keywords.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Keywords.id, {
+              key: value,
+            });
+          }
+          (properties[0] as KeywordsModel).setKey(value);
+        } else if(type === TopicControlFactory.Ratings.id) {
+          const controls = model.findControlByType(TopicControlFactory.Ratings.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              key: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Ratings.id, {
+              key: value,
+            });
+          }
+          (properties[0] as RatingsModel).setKey(value);
         }
       },
 
@@ -1227,6 +1346,18 @@ abstract class Topic extends NodeGraph {
           return result['required'] = (properties[0] as RadioModel).getRequired();
         } else if(type === TopicControlFactory.Checkbox.id) {
           return result['required'] = (properties[0] as CheckboxModel).getRequired();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['required'] = (properties[0] as CalendarModel).getRequired();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['required'] = (properties[0] as EditorModel).getRequired();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['required'] = (properties[0] as TimeModel).getRequired();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['required'] = (properties[0] as AddressModel).getRequired();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['required'] = (properties[0] as KeywordsModel).getRequired();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['required'] = (properties[0] as RatingsModel).getRequired();
         }
       }
     };

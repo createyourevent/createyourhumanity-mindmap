@@ -97,6 +97,11 @@ class XMLSerializerTango implements XMLMindmapSerializer {
       this._noteTextToXML(document, parentTopic, text);
     }
 
+    const visible = topic.getVisible();
+    if($defined(visible)) {
+      parentTopic.setAttribute('visible', visible);
+    }
+
     const shape = topic.getShapeType();
     if ($defined(shape)) {
       parentTopic.setAttribute('shape', shape);
@@ -357,6 +362,12 @@ class XMLSerializerTango implements XMLMindmapSerializer {
     const text = domElem.getAttribute('text');
     if ($defined(text) && text) {
       topic.setText(text);
+    }
+
+    // Set text property is it;s defined...
+    const visible = domElem.getAttribute('visible');
+    if ($defined(visible) && visible) {
+      topic.setVisible(visible);
     }
 
     const fontStyle = domElem.getAttribute('fontStyle');

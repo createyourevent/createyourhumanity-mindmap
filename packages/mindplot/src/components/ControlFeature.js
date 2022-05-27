@@ -24,6 +24,11 @@ import RadioIcon from './forms/control/RadioIcon';
 import CheckboxIcon from './forms/control/CheckboxIcon';
 import OptionIcon from './forms/control/OptionIcon';
 import RadiogroupIcon from './forms/control/RadiogroupIcon';
+import EditorIcon from './forms/control/EditorIcon';
+import TimeIcon from './forms/control/TimeIcon';
+import AddressIcon from './forms/control/AddressIcon';
+import KeywordsIcon from './forms/control/KeywordsIcon';
+import RatingsIcon from './forms/control/RatingsIcon';
 import CalendarIcon from './forms/control/CalendarIcon';
 
 
@@ -68,6 +73,33 @@ const TopicControlFactory = {
     icon: CalendarIcon,
   },
 
+  Editor: {
+    id: 'editor',
+    icon: EditorIcon,
+  },
+
+  Time: {
+    id: 'time',
+    icon: TimeIcon,
+  },
+
+  Address: {
+    id: 'address',
+    icon: AddressIcon,
+  },
+
+  Keywords: {
+    id: 'keywords',
+    icon: KeywordsIcon,
+  },
+
+  Ratings: {
+    id: 'ratings',
+    icon: RatingsIcon,
+  },
+
+
+
 
   createIcon(topic, model, readOnly) {
     $assert(topic, 'topic can not be null');
@@ -79,6 +111,6 @@ const TopicControlFactory = {
   },
 };
 
-TopicControlFactory._featuresMetadataById = [TopicControlFactory.Textfield, TopicControlFactory.Textarea, TopicControlFactory.Select, TopicControlFactory.Checkbox, TopicControlFactory.Radio, TopicControlFactory.Radiogroup, TopicControlFactory.Option, TopicControlFactory.Calendar];
+TopicControlFactory._featuresMetadataById = [TopicControlFactory.Ratings, TopicControlFactory.Keywords, TopicControlFactory.Address, TopicControlFactory.Time, TopicControlFactory.Editor, TopicControlFactory.Textfield, TopicControlFactory.Textarea, TopicControlFactory.Select, TopicControlFactory.Checkbox, TopicControlFactory.Radio, TopicControlFactory.Radiogroup, TopicControlFactory.Option, TopicControlFactory.Calendar];
 
 export default TopicControlFactory;
