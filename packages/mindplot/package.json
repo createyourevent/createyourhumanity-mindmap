@@ -1,6 +1,6 @@
 {
     "name": "@wisemapping/mindplot",
-    "version": "10.4.3",
+    "version": "10.4.4",
     "description": "WiseMapping - Mindplot Canvas Library",
     "homepage": "http://www.wisemapping.org/",
     "directories": {
@@ -32,9 +32,11 @@
     },
     "private": false,
     "dependencies": {
+        "@mat3e-ux/stars": "file:/home/manuel/Development/mat3e-stars/packages/stars",
         "@wisemapping/core-js": "^0.4.0",
         "@wisemapping/web2d": "^0.4.0",
         "bootstrap": "4.6.1",
+        "feather-icons": "^4.29.0",
         "jest": "^27.4.5",
         "jquery": "^3.6.0",
         "jquery-hotkeys": "^0.2.2",
