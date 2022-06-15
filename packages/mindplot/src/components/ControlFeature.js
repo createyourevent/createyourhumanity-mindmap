@@ -30,6 +30,8 @@ import AddressIcon from './forms/control/AddressIcon';
 import KeywordsIcon from './forms/control/KeywordsIcon';
 import RatingsIcon from './forms/control/RatingsIcon';
 import CalendarIcon from './forms/control/CalendarIcon';
+import MulticheckboxIcon from './forms/control/MulticheckboxIcon';
+import MultiselectboxIcon from './forms/control/MultiselectboxIcon';
 
 
 const TopicControlFactory = {
@@ -98,19 +100,29 @@ const TopicControlFactory = {
     icon: RatingsIcon,
   },
 
+  Multiselectbox: {
+    id: 'multiselectbox',
+    icon: MultiselectboxIcon,
+  },
+
+  Multicheckbox: {
+    id: 'multicheckbox',
+    icon: MulticheckboxIcon,
+  },
 
 
 
-  createIcon(topic, model, readOnly) {
+
+  createIcon(topic, model, readOnly, isProfile) {
     $assert(topic, 'topic can not be null');
     $assert(model, 'model can not be null');
 
     const { icon: Icon } = TopicControlFactory._featuresMetadataById
       .filter((elem) => elem.id === model.getType())[0];
-    return new Icon(topic, model, readOnly);
+    return new Icon(topic, model, readOnly, isProfile);
   },
 };
 
-TopicControlFactory._featuresMetadataById = [TopicControlFactory.Ratings, TopicControlFactory.Keywords, TopicControlFactory.Address, TopicControlFactory.Time, TopicControlFactory.Editor, TopicControlFactory.Textfield, TopicControlFactory.Textarea, TopicControlFactory.Select, TopicControlFactory.Checkbox, TopicControlFactory.Radio, TopicControlFactory.Radiogroup, TopicControlFactory.Option, TopicControlFactory.Calendar];
+TopicControlFactory._featuresMetadataById = [TopicControlFactory.Multicheckbox, TopicControlFactory.Multiselectbox, TopicControlFactory.Ratings, TopicControlFactory.Keywords, TopicControlFactory.Address, TopicControlFactory.Time, TopicControlFactory.Editor, TopicControlFactory.Textfield, TopicControlFactory.Textarea, TopicControlFactory.Select, TopicControlFactory.Checkbox, TopicControlFactory.Radio, TopicControlFactory.Radiogroup, TopicControlFactory.Option, TopicControlFactory.Calendar];
 
 export default TopicControlFactory;

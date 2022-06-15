@@ -23,8 +23,9 @@ import Workspace from './Workspace';
 import DragTopic from './DragTopic';
 import LayoutManager from './layout/LayoutManager';
 import SizeType from './SizeType';
+import { CreateYourHumanityInterface } from '../@types/createyourhumanity-app';
 
-abstract class NodeGraph {
+abstract class NodeGraph implements CreateYourHumanityInterface {
   private _mouseEvents: boolean;
 
   private _options;
@@ -36,6 +37,12 @@ abstract class NodeGraph {
   private _model: NodeModel;
 
   private _elem2d: ElementClass;
+
+  _value: string;
+  
+  _grant: string;
+
+  _isFriend: boolean
 
   constructor(nodeModel: NodeModel, options) {
     $assert(nodeModel, 'model can not be null');
@@ -49,6 +56,10 @@ abstract class NodeGraph {
 
   isReadOnly(): boolean {
     return this._options.readOnly;
+  }
+
+  isProfile(): boolean {
+    return this._options.isProfile;
   }
 
   getType(): string {
@@ -117,6 +128,30 @@ abstract class NodeGraph {
   setModel(model: NodeModel) {
     $assert(model, 'Model can not be null');
     this._model = model;
+  }
+
+  getValue() {
+    return this._value;
+  }
+
+  setValue(value: string) {
+    this._value = value;
+  }
+
+  getGrant() {
+    return this._grant;
+  }
+
+  setGrant(grant: string) {
+    this._grant = grant;
+  }
+
+  isFriend() {
+    return this._isFriend;
+  }
+
+  setFriend(isFriend: boolean) {
+    this._isFriend = isFriend
   }
 
   getId(): number {

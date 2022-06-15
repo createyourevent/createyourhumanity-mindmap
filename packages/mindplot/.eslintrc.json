@@ -8,11 +8,15 @@
     "extends": [
         "airbnb-base",
         "plugin:cypress/recommended",
+        "@typescript-eslint/parser",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": 11
+        "ecmaVersion": 11,
+        "project": [
+            "tsconfig.json"
+        ]
     },
     "globals": {
         // designer is a global currently used as a hack. Remove this when fixing the hack.

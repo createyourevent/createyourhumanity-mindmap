@@ -33,6 +33,10 @@ import HtmlControlEditor from '../../../assets/images/html/control/editor.png';
 import HtmlControlKeywords from '../../../assets/images/html/control/keywords.png';
 import HtmlControlRatings from '../../../assets/images/html/control/ratings.png';
 
+import HtmlControlMultiSelect from '../../../assets/images/html/control/multiselect.png';
+import HtmlControlMultiCheckbox from '../../../assets/images/html/control/multicheckbox.png';
+
+
 class TopicHtmlControlPanel extends ListToolbarPanel {
   // eslint-disable-next-line class-methods-use-this
   buildPanel() {
@@ -43,12 +47,14 @@ class TopicHtmlControlPanel extends ListToolbarPanel {
       <div id="editor"><img src="${HtmlControlEditor}" alt="Editor">Editor</div>
       <hr/>
       <div id="select"><img src="${HtmlControlSelect}" alt="Select">Select</div>
+      <div id="multiselect"><img src="${HtmlControlMultiSelect}" alt="Multiselect">Multiselect</div>
       <div id="option"><img src="${HtmlControlOption}" alt="Option">Option</div>
       <hr/>
       <div id="radiogroup"><img src="${HtmlControlRadioGroup}" alt="Radio group">Radio group</div>
       <div id="radio"><img src="${HtmlControlRadio}" alt="Radiobutton">Radiobutton</div>
       <hr/>
       <div id="checkbox"><img src="${HtmlControlCheckbox}" alt="Checkbox">Checkbox</div>
+      <div id="multicheckbox"><img src="${HtmlControlMultiCheckbox}" alt="Multicheckbox">Multicheckbox</div>
       <hr/>
       <div id="calendar"><img src="${HtmlControlCalendar}" alt="Calendar">Calendar</div>
       <div id="time"><img src="${HtmlControlTime}" alt="Time">Time</div>

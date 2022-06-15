@@ -132,46 +132,6 @@ export default function Toolbar({
                     </>
                 )}
                 <ToolbarRightContainer>
-                    <ToolbarButton
-                        id="export"
-                        className="buttonOn"
-                        onClick={() => onAction('export')}
-                    >
-                        <img src={ExportSvg} />
-                    </ToolbarButton>
-                    {(editorMode === 'edition-owner' || editorMode === 'edition-editor' || editorMode === 'edition-viewer') && (
-                        <ToolbarButton
-                            id="print"
-                            className="buttonOn"
-                            onClick={() => onAction('print')}
-                        >
-                            <img src={PrintSvg} />
-                        </ToolbarButton>
-                    )}
-                    {editorMode === 'edition-owner' && (
-                        <>
-                            <ToolbarButton
-                                id="history"
-                                className="buttonOn"
-                                onClick={() => onAction('history')}
-                            >
-                                <img src={HistorySvg} />
-                            </ToolbarButton>
-                            <ToolbarButton
-                                id="publishIt"
-                                className="buttonOn"
-                                onClick={() => onAction('publish')}
-                            >
-                                <img src={PublicSvg} />
-                            </ToolbarButton>
-                        </>
-                    )}
-                    {editorMode === 'edition-owner' && (
-                        <ActionButton onClick={() => onAction('share')}>
-                            {intl.formatMessage({ id: 'action.share', defaultMessage: 'Share' })}
-                        </ActionButton>
-
-                    )}
                 </ToolbarRightContainer>
             </div>
         </HeaderContainer>

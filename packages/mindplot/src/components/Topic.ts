@@ -65,6 +65,9 @@ import EditorModel from './model/control/EditorModel';
 import KeywordsModel from './model/control/KeywordsModel';
 import RatingsModel from './model/control/RatingsModel';
 import TimeModel from './model/control/TimeModel';
+import MulticheckboxModel from './model/control/MulticheckboxModel';
+import MultiselectboxModel from './model/control/MultiselectboxModel';
+
 
 const ICON_SCALING_FACTOR = 1.3;
 
@@ -366,7 +369,7 @@ abstract class Topic extends NodeGraph {
       const modelControl = this.getModel();
       const controlsModel = modelControl.getControls();
       controlsModel.forEach((f) => {
-        const icon = TopicControlFactory.createIcon(this, f, this.isReadOnly());
+        const icon = TopicControlFactory.createIcon(this, f, this.isReadOnly(), this.isProfile());
         switch(f.getType()) { 
           case 'textfield': {  
             result.addIcon(icon, f.getType() === TopicControlFactory.Textfield.id && !this.isReadOnly(), 'control'); 
@@ -418,6 +421,14 @@ abstract class Topic extends NodeGraph {
           } 
           case 'ratings': {  
             result.addIcon(icon, f.getType() === TopicControlFactory.Ratings.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
+          case 'multiselectbox': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Multiselectbox.id && !this.isReadOnly(), 'control');
+            break; 
+          } 
+          case 'multicheckbox': {  
+            result.addIcon(icon, f.getType() === TopicControlFactory.Multicheckbox.id && !this.isReadOnly(), 'control');
             break; 
           } 
           default: {  
@@ -1041,6 +1052,240 @@ abstract class Topic extends NodeGraph {
       type = model.getControls()[0].getType();
     }
     const editorModel = {
+      getDescription(): string {
+        let properties;
+        properties = model.findControlByType(type);
+        if(type === TopicControlFactory.Textfield.id) {
+          return result['description'] = (properties[0] as TextfieldModel).getDescription();
+        } else if(type === TopicControlFactory.Textarea.id) {
+          return result['description'] = (properties[0] as TextareaModel).getDescription();
+        } else if(type === TopicControlFactory.Select.id) {
+          return result['description'] = (properties[0] as SelectModel).getDescription();
+        } else if(type === TopicControlFactory.Option.id) {
+          return result['description'] = (properties[0] as OptionModel).getDescription();
+        } else if(type === TopicControlFactory.Radiogroup.id) {
+          return result['description'] = (properties[0] as RadiogroupModel).getDescription();
+        } else if(type === TopicControlFactory.Radio.id) {
+          return result['description'] = (properties[0] as RadioModel).getDescription();
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          return result['description'] = (properties[0] as CheckboxModel).getDescription();
+        } else if(type === TopicControlFactory.Multicheckbox.id) {
+          return result['description'] = (properties[0] as MulticheckboxModel).getDescription();
+        } else if(type === TopicControlFactory.Multiselectbox.id) {
+          return result['description'] = (properties[0] as MultiselectboxModel).getDescription();
+        } else if(type === TopicControlFactory.Calendar.id) {
+          return result['description'] = (properties[0] as CalendarModel).getDescription();
+        } else if(type === TopicControlFactory.Editor.id) {
+          return result['description'] = (properties[0] as EditorModel).getDescription();
+        } else if(type === TopicControlFactory.Time.id) {
+          return result['description'] = (properties[0] as TimeModel).getDescription();
+        } else if(type === TopicControlFactory.Address.id) {
+          return result['description'] = (properties[0] as AddressModel).getDescription();
+        } else if(type === TopicControlFactory.Keywords.id) {
+          return result['description'] = (properties[0] as KeywordsModel).getDescription();
+        } else if(type === TopicControlFactory.Ratings.id) {
+          return result['description'] = (properties[0] as RatingsModel).getDescription();
+        }
+      },
+
+      setDescription(value: string) {
+        const dispatcher = ActionDispatcher.getInstance();
+        const properties = model.findControlByType(type);
+        if(type === TopicControlFactory.Textfield.id) {
+          const controls = model.findControlByType(TopicControlFactory.Textfield.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Textfield.id, {
+              description: value,
+            });
+          }
+          (properties[0] as TextfieldModel).setDescription(value);
+        } else if(type === TopicControlFactory.Textarea.id) {
+          const controls = model.findControlByType(TopicControlFactory.Textarea.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Textarea.id, {
+              description: value,
+            });
+          }
+          (properties[0] as TextareaModel).setDescription(value);
+        } else if(type === TopicControlFactory.Select.id) {
+          const controls = model.findControlByType(TopicControlFactory.Select.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Select.id, {
+              description: value,
+            });
+          }
+          (properties[0] as SelectModel).setDescription(value);
+        } else if(type === TopicControlFactory.Option.id) {
+          const controls = model.findControlByType(TopicControlFactory.Option.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Option.id, {
+              description: value,
+            });
+          }
+          (properties[0] as OptionModel).setDescription(value);
+        } else if(type === TopicControlFactory.Radiogroup.id) {
+          const controls = model.findControlByType(TopicControlFactory.Radiogroup.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Radiogroup.id, {
+              description: value,
+            });
+          }
+          (properties[0] as RadiogroupModel).setDescription(value);
+        } else if(type === TopicControlFactory.Radio.id) {
+          const controls = model.findControlByType(TopicControlFactory.Radio.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Radio.id, {
+              description: value,
+            });
+          }
+          (properties[0] as RadioModel).setDescription(value);
+        } else if(type === TopicControlFactory.Checkbox.id) {
+          const controls = model.findControlByType(TopicControlFactory.Checkbox.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Checkbox.id, {
+              description: value,
+            });
+          }
+          (properties[0] as CheckboxModel).setDescription(value);
+        } else if(type === TopicControlFactory.Calendar.id) {
+          const controls = model.findControlByType(TopicControlFactory.Calendar.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Calendar.id, {
+              description: value,
+            });
+          }
+          (properties[0] as CalendarModel).setDescription(value);
+        } else if(type === TopicControlFactory.Editor.id) {
+          const controls = model.findControlByType(TopicControlFactory.Editor.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Editor.id, {
+              description: value,
+            });
+          }
+          (properties[0] as EditorModel).setDescription(value);
+        } else if(type === TopicControlFactory.Time.id) {
+          const controls = model.findControlByType(TopicControlFactory.Time.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Time.id, {
+              description: value,
+            });
+          }
+          (properties[0] as TimeModel).setDescription(value);
+        } else if(type === TopicControlFactory.Address.id) {
+          const controls = model.findControlByType(TopicControlFactory.Address.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Address.id, {
+              description: value,
+            });
+          }
+          (properties[0] as AddressModel).setDescription(value);
+        } else if(type === TopicControlFactory.Keywords.id) {
+          const controls = model.findControlByType(TopicControlFactory.Keywords.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Keywords.id, {
+              description: value,
+            });
+          }
+          (properties[0] as KeywordsModel).setDescription(value);
+        } /* else if(type === TopicControlFactory.Keywords.id) {
+          const controls = model.findControlByType(TopicControlFactory.Keywords.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Keywords.id, {
+              description: value,
+            });
+          }
+          (properties[0] as KeywordsModel).setDescription(value);
+        } */ else if(type === TopicControlFactory.Ratings.id) {
+          const controls = model.findControlByType(TopicControlFactory.Ratings.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Ratings.id, {
+              description: value,
+            });
+          }
+          (properties[0] as RatingsModel).setDescription(value);
+        } else if(type === TopicControlFactory.Multicheckbox.id) {
+          const controls = model.findControlByType(TopicControlFactory.Multicheckbox.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Multicheckbox.id, {
+              description: value,
+            });
+          }
+          (properties[0] as MulticheckboxModel).setDescription(value);
+        } else if(type === TopicControlFactory.Multiselectbox.id) {
+          const controls = model.findControlByType(TopicControlFactory.Multiselectbox.id);
+          if (controls.length > 0) {
+            dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
+              description: value,
+            });
+          } else {
+            dispatcher.addControlToTopic(topicId, TopicControlFactory.Multiselectbox.id, {
+              description: value,
+            });
+          }
+          (properties[0] as MultiselectboxModel).setDescription(value);
+        }
+      },
+
       getKey(): string {
         let properties;
         properties = model.findControlByType(type);
@@ -1184,7 +1429,7 @@ abstract class Topic extends NodeGraph {
             });
           }
           (properties[0] as TimeModel).setKey(value);
-        } else if(type === TopicControlFactory.Time.id) {
+        } else if(type === TopicControlFactory.Address.id) {
           const controls = model.findControlByType(TopicControlFactory.Address.id);
           if (controls.length > 0) {
             dispatcher.changeControlToTopic(topicId, controls[0].getId(), {
@@ -1346,18 +1591,22 @@ abstract class Topic extends NodeGraph {
           return result['required'] = (properties[0] as RadioModel).getRequired();
         } else if(type === TopicControlFactory.Checkbox.id) {
           return result['required'] = (properties[0] as CheckboxModel).getRequired();
-        } else if(type === TopicControlFactory.Checkbox.id) {
+        } else if(type === TopicControlFactory.Calendar.id) {
           return result['required'] = (properties[0] as CalendarModel).getRequired();
-        } else if(type === TopicControlFactory.Checkbox.id) {
+        } else if(type === TopicControlFactory.Editor.id) {
           return result['required'] = (properties[0] as EditorModel).getRequired();
-        } else if(type === TopicControlFactory.Checkbox.id) {
+        } else if(type === TopicControlFactory.Time.id) {
           return result['required'] = (properties[0] as TimeModel).getRequired();
-        } else if(type === TopicControlFactory.Checkbox.id) {
+        } else if(type === TopicControlFactory.Address.id) {
           return result['required'] = (properties[0] as AddressModel).getRequired();
-        } else if(type === TopicControlFactory.Checkbox.id) {
+        } else if(type === TopicControlFactory.Keywords.id) {
           return result['required'] = (properties[0] as KeywordsModel).getRequired();
-        } else if(type === TopicControlFactory.Checkbox.id) {
+        } else if(type === TopicControlFactory.Ratings.id) {
           return result['required'] = (properties[0] as RatingsModel).getRequired();
+        } else if(type === TopicControlFactory.Multicheckbox.id) {
+          return result['required'] = (properties[0] as MulticheckboxModel).getRequired();
+        } else if(type === TopicControlFactory.Multiselectbox.id) {
+          return result['required'] = (properties[0] as MultiselectboxModel).getRequired();
         }
       }
     };

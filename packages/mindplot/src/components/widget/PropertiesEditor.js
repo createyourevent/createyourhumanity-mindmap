@@ -107,13 +107,32 @@ class PropertiesEditor extends BootstrapDialog {
       input.val(model.getKey());
     }
 
+    // Add Input
+    const desc_label = $('<label for="description">Description</label>');
+    const desc_input = $('<textarea id="description" name="description"/>').attr({
+      placeholder: 'Description...',
+      required: 'false',
+      autofocus: 'autofocus',
+      class: 'form-control',
+    });
+    desc_input.on('keypress', (event) => {
+      event.stopPropagation();
+    });
+
+    if (model.getDescription() != null) {
+      desc_input.val(model.getDescription());
+    }
+
     const hr = $('<hr/>');
 
     section.append(req_label);
     section.append(div_row);
+    // section.append(hr);
+    // section.append(key_label);
+    // section.append(input);
     section.append(hr);
-    section.append(key_label);
-    section.append(input);
+    section.append(desc_label);
+    section.append(desc_input);
     this.form.append(section);
 
 
@@ -125,12 +144,13 @@ class PropertiesEditor extends BootstrapDialog {
       model.setKey(keyValue);
       const radios = document. getElementsByName('req');
       const selected = Array.from(radios).find(radio => radio.checked);
-      console.log(selected);
       let req = false;
       if(selected.id === 'inputReqTrue') {
         req = true;
       }
       model.setRequired(req);
+      let descValue = desc_input.val();
+      model.setDescription(descValue);
       this.close();
     });
 

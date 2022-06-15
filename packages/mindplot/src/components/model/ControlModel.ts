@@ -31,6 +31,8 @@ class ControlModel {
 
   private _key: string;
 
+  private _description: string;
+
   /**
      * @constructs
      * @param type
@@ -105,6 +107,14 @@ class ControlModel {
   setRequired(required: boolean) {
     ///$assert(required, 'required can not be null');
     this.setAttribute('required', required);
+  }
+
+  getDescription(): string {
+    return this.getAttribute('description') as string;
+  }
+
+  setDescription(desc: string) {
+    this.setAttribute('description', desc);
   }
 
   static _nextUUID(): number {

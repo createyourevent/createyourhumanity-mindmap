@@ -54,6 +54,7 @@ const options = DesignerOptionsBuilder.buildOptions(
     container: 'mindplot',
     zoom: zoomParam || global.userOptions.zoom,
     locale: global.locale,
+    isProfile: false,
   },
 );
 

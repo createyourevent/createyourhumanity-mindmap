@@ -44,7 +44,7 @@ class RadioIcon extends Icon {
           event.stopPropagation();
         });
       }
-
+    /*
       this._tip = new FloatingTip($(me.getImage().peer._native), {
         title: $msg('PROPERTIES'),
         // Content can also be a function of the target element!
@@ -55,6 +55,7 @@ class RadioIcon extends Icon {
         placement: 'bottom',
         destroyOnExit: true,
       });
+    */
     }
 
     _buildTooltipContent() {

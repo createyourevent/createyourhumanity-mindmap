@@ -1,11 +1,4 @@
 import { $assert } from '@wisemapping/core-js';
-import ControlType from './ControlType';
-import ControlModel from './ControlModel';
-import TextfieldModel from './control/TextfieldModel';
-import TextareaModel from './control/TextareaModel';
-import SelectModel from './control/SelectModel';
-import RadioModel from './control/RadioModel';
-import CheckboxModel from './control/CheckboxModel';
 import LayoutType from './LayoutType';
 import LayoutModel from './LayoutModel';
 import ContainerModel from './layout/ContainerModel';

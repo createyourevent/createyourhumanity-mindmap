@@ -31,10 +31,12 @@ class HtmlMultistepFormElementIcon extends Icon {
       }
 
       remove() {
-        const actionDispatcher = ActionDispatcher.getInstance();
-        const featureId = this._htmlElementModel.getId();
-        const topicId = this._topic.getId();
-        actionDispatcher.removeFeatureFromTopic(topicId, featureId);
+        if(this._readOnly) {
+          const actionDispatcher = ActionDispatcher.getInstance();
+          const featureId = this._htmlElementModel.getId();
+          const topicId = this._topic.getId();
+          actionDispatcher.removeFeatureFromTopic(topicId, featureId);
+        }
       }
     
       getModel(): FeatureModel {

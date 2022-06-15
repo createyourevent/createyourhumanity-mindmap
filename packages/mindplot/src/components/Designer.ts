@@ -138,6 +138,7 @@ class Designer extends Events {
 
     // Hack: There are static reference to designer variable. Needs to be reviewed.
     global.designer = this;
+
   }
 
   private _registerWheelEvents(): void {
@@ -228,9 +229,9 @@ class Designer extends Events {
     return dragManager;
   }
 
-  private _buildNodeGraph(model: NodeModel, readOnly: boolean): Topic {
+  private _buildNodeGraph(model: NodeModel, readOnly: boolean, isProfile): Topic {
     // Create node graph ...
-    const topic = TopicFactory.create(model, { readOnly });
+    const topic = TopicFactory.create(model, { readOnly, isProfile });
     this.getModel().addTopic(topic);
     const me = this;
     // Add Topic events ...
@@ -575,7 +576,7 @@ class Designer extends Events {
          * @param {mindplot.Mindmap} mindmap
          * @throws will throw an error if mindmapModel is null or undefined
          */
-  loadMap(mindmap: Mindmap): void {
+  loadMap(mindmap: Mindmap, values?: Map<string, string>, grants?: Map<string, string>, isFriend?: boolean): void {
     $assert(mindmap, 'mindmapModel can not be null');
     this._mindmap = mindmap;
 
@@ -589,15 +590,22 @@ class Designer extends Events {
       if (topic) {
         topic.setPosition(event.getPosition());
         topic.setOrder(event.getOrder());
+        if(values && grants) {
+          topic.setValue(values[id+'']);
+          topic.setGrant(grants[id+'']);
+          topic.setFriend(isFriend);
+        }
       }
     });
     this._eventBussDispatcher.setLayoutManager(layoutManager);
 
     // Building node graph ...
     const branches = mindmap.getBranches();
+    let i = 0;
     branches.forEach((branch) => {
       const nodeGraph = this.nodeModelToTopic(branch);
       nodeGraph.setBranchVisibility(true);
+      i++;
     });
 
     // Connect relationships ...
@@ -618,6 +626,10 @@ class Designer extends Events {
     return this._mindmap;
   }
 
+  isProfile(): boolean {
+    return this._options.isProfile;
+  }
+
   undo(): void {
     this._actionDispatcher.actionRunner.undo();
   }
@@ -635,7 +647,7 @@ class Designer extends Events {
     let children = nodeModel.getChildren().slice();
     children = children.sort((a, b) => a.getOrder() - b.getOrder());
 
-    const result = this._buildNodeGraph(nodeModel, this.isReadOnly());
+    const result = this._buildNodeGraph(nodeModel, this.isReadOnly(), this.isProfile());
     result.setVisibility(false);
 
     this._workspace.append(result);
@@ -990,6 +1002,14 @@ class Designer extends Events {
         });
       } else if(type == 'ratings') {
         this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Ratings.id as ControlType, {
+          text: type,
+        });
+      } else if(type == 'multicheckbox') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Multicheckbox.id as ControlType, {
+          text: type,
+        });
+      } else if(type == 'multiselect') {
+        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Multiselectbox.id as ControlType, {
           text: type,
         });
       }

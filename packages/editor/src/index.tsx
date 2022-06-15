@@ -35,6 +35,9 @@ export type EditorOptions = {
 export type EditorProps = {
     mapId: string;
     options: EditorOptions;
+    values: Map<string, string> | null;
+    grants: Map<string, string> | null;
+    isFriend: boolean;
     persistenceManager: PersistenceManager;
     onAction: (action: ToolbarActionType) => void;
     onLoad?: (designer: Designer) => void;
@@ -43,6 +46,9 @@ export type EditorProps = {
 const Editor = ({
     mapId,
     options,
+    values,
+    grants,
+    isFriend,
     persistenceManager,
     onAction,
     onLoad,
@@ -62,7 +68,7 @@ const Editor = ({
         // Load mindmap ...
         const instance = PersistenceManager.getInstance();
         const mindmap = instance.load(mapId);
-        designer.loadMap(mindmap);
+        designer.loadMap(mindmap, values, grants, isFriend);
 
         if (options.locked) {
             $notify(options.lockedMsg, false);
@@ -77,6 +83,13 @@ const Editor = ({
         }
     }, [options.enableKeyboardEvents]);
 
+    let isProfile: boolean;
+    if(values && grants) {
+        isProfile = true;
+    } else {
+        isProfile = false;
+    }
+
     const onLoadDesigner = (mapId: string, options: EditorOptions, persistenceManager: PersistenceManager): Designer => {
         const buildOptions = DesignerOptionsBuilder.buildOptions({
             persistenceManager,
@@ -85,6 +98,7 @@ const Editor = ({
             container: 'mindplot',
             zoom: options.zoom,
             locale: options.locale,
+            isProfile: isProfile,
         });
 
         // Build designer ...

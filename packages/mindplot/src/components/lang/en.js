@@ -84,6 +84,14 @@ const EN = {
   PROPERTIES: 'Properties',
   PROPERTIES_INFO: 'Below you could select the property for a given control element.',
   KEY: 'ID',
+  VALUES: 'Values',
+  NOT_VISIBLE: 'Not visible',
+  NOT_FILLED: 'Not filled by customer',
+  FORM: 'Form',
+  TOPIC_HTML: 'Html',
+  TOPIC_HTML_CONTROL: 'Html Control',
+  TOPIC_HTML_LAYOUT: 'Html Layout',
+  DESC: 'Description'
 };
 
 export default EN;

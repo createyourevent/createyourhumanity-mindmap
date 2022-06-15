@@ -18,11 +18,11 @@
 import { $assert } from '@wisemapping/core-js';
 import ControlModel from '../ControlModel';
 
-class AddressModel extends ControlModel {
+class MultiselectboxModel extends ControlModel {
   constructor(attributes) {
-    super('address');
-    const addressText = attributes.text ? attributes.text : ' ';
-    this.setText(addressText);
+    super('multiselectbox');
+    const textfieldText = attributes.text ? attributes.text : ' ';
+    this.setText(textfieldText);
     const keyText = attributes.key ? attributes.key : ' ';
     this.setKey(keyText);
     const requiredText = attributes.required ? attributes.required : false;
@@ -69,4 +69,4 @@ class AddressModel extends ControlModel {
   }
 }
 
-export default AddressModel;
+export default MultiselectboxModel;

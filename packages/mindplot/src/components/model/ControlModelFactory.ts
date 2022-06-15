@@ -14,6 +14,8 @@ import TimeModel from './control/TimeModel';
 import AddressModel from './control/AddressModel';
 import KeywordsModel from './control/KeywordsModel';
 import RatingsModel from './control/RatingsModel';
+import MulticheckboxModel from './control/MulticheckboxModel';
+import MultiselectboxModel from './control/MultiselectboxModel';
 
 interface NodeById {
   id: ControlType,
@@ -60,6 +62,12 @@ class ControlModelFactory {
   }, {
     id: 'ratings',
     model: RatingsModel,
+  }, {
+    id: 'multiselectbox',
+    model: MultiselectboxModel,
+  }, {
+    id: 'multicheckbox',
+    model: MulticheckboxModel,
   }];
 
   static createModel(type: ControlType, attributes): ControlModel {

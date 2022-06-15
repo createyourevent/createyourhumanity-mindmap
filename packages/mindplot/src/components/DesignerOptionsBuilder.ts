@@ -29,6 +29,7 @@ export type DesignerOptions = {
   persistenceManager?: PersistenceManager,
   saveOnLoad?: boolean,
   locale?: string,
+  isProfile: boolean,
 };
 
 class OptionsBuilder {
@@ -51,6 +52,7 @@ class OptionsBuilder {
       containerSize,
       container: 'mindplot',
       locale: 'en',
+      isProfile: false,
     };
 
     return { ...defaultOptions, ...options };

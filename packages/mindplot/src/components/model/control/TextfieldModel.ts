@@ -27,6 +27,8 @@ class TextfieldModel extends ControlModel {
     this.setKey(keyText);
     const requiredText = attributes.required ? attributes.required : false;
     this.setRequired(requiredText);
+    const descriptionText = attributes.description ? attributes.description : '';
+    this.setDescription(descriptionText);
   }
 
   /** */
@@ -57,6 +59,14 @@ class TextfieldModel extends ControlModel {
   setRequired(required: boolean) {
     ///$assert(required, 'required can not be null');
     this.setAttribute('required', required);
+  }
+
+  getDescription(): string {
+    return this.getAttribute('description') as string;
+  }
+
+  setDescription(desc: string) {
+    this.setAttribute('description', desc);
   }
   
 }

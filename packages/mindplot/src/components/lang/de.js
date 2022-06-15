@@ -84,6 +84,14 @@ const DE = {
   PROPERTIES: 'Eigenschaften',
   PROPERTIES_INFO: 'Unten können Sie die Eigenschaften des jeweiligen Kontrollelements bestimmen.',
   KEY: 'ID',
+  VALUES: 'Werte',
+  NOT_VISIBLE: 'Nicht sichtbar',
+  NOT_FILLED: 'Nicht ausgefüllt vom Kunden',
+  FORM: 'Form',
+  TOPIC_HTML: 'Html',
+  TOPIC_HTML_CONTROL: 'Html Control',
+  TOPIC_HTML_LAYOUT: 'Html Layout',
+  DESC: 'Beschreibung'
 };
 
 export default DE;

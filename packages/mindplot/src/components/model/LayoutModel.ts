@@ -102,6 +102,14 @@ class LayoutModel {
     this.setAttribute('required', required);
   }
 
+  getDescription(): string {
+    return this.getAttribute('description') as string;
+  }
+
+  setDescription(desc: string) {
+    this.setAttribute('description', desc);
+  }
+
   static _nextUUID(): number {
     const result = LayoutModel._nextId + 1;
     LayoutModel._nextId = result;

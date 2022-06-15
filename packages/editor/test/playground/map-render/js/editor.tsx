@@ -30,9 +30,9 @@ const initialization = (designer: Designer) => {
   });
 };
 
-const persistence = new LocalStorageManager('samples/{id}.wxml', false, false);
+const persistence = new LocalStorageManager('samples/forms.wxml', true, false);
 PersistenceManager.init(persistence);
-const mapId = 'welcome';
+const mapId = 'forms';
 const options: EditorOptions = {
   zoom: 0.8,
   locked: false,
@@ -42,10 +42,17 @@ const options: EditorOptions = {
   enableKeyboardEvents: true
 };
 
+const values = JSON.parse('{"21":2,"22":"","25":"supi ....","26":"klslkjfsjdlk","27":true,"42":"sw-dev","46":"45kg","47":"34cm","48":"supi dupi hahahaha....dfgdfgdfg","56":"<p>srg</p><p>sdsfsdf</p>","57":"13:14","58":[{"display":"Test","value":"Test"},{"display":"Test2","value":"Test2"},{"display":"Test3","value":"Test3"},{"display":"Test4","value":"Test4"}],"59":"Zentralstrasse 41, 8212 Neuhausen am Rheinfall, Schweiz","66":2,"67":{"1":true,"2":false,"3":true,"4":false},"72":[3],"77":"2022-06-16","Geschlecht":"1"}');
+const grants = JSON.parse('{}');
+const isFriend = true;
+
 ReactDOM.render(
   <Editor
     mapId={mapId}
     options={options}
+    values={values}
+    grants={grants}
+    isFriend={isFriend}
     persistenceManager={persistence}
     onAction={(action) => console.log('action called:', action)}
     onLoad={initialization}

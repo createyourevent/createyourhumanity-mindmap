@@ -1,19 +1,19 @@
-import AddressImage from '../../../../assets/icons/html/control/address.png';
+import MultiselectboxImage from '../../../../assets/icons/html/control/multiselect.png';
 import Icon from '../../Icon';
 import Topic from '../../Topic';
 import { $assert } from '@wisemapping/core-js';
-import AddressModel from '../../model/control/AddressModel';
 import ControlModel from '../../model/ControlModel';
 import FeatureModel from '../../model/FeatureModel';
+import MultiselectboxModel from '../../model/control/MultiselectboxModel';
 import ActionDispatcher from '../../ActionDispatcher';
-import FloatingTip from '../../widget/FloatingTip';
-import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
+import FloatingTip from '../../widget/FloatingTip';
 import LayoutModel from '../../model/LayoutModel';
+const feather = require('feather-icons')
 
-class AddressIcon extends Icon {
+class MultiselectboxIcon extends Icon {
 
-    private _addressModel: ControlModel;
+    private _multiselectboxModel: ControlModel;
 
     private _topic: Topic;
   
@@ -23,16 +23,16 @@ class AddressIcon extends Icon {
 
     private _tip: FloatingTip;
     
-    constructor(topic: Topic, addressModel: AddressModel, readOnly: boolean, isProfile?: boolean) {
+    constructor(topic: Topic, multiselectModel: MultiselectboxModel, readOnly: boolean, isProfile?: boolean) {
         $assert(topic, 'topic can not be null');
-        $assert(addressModel, 'addressModel can not be null');
+        $assert(multiselectModel, 'textfieldModel can not be null');
     
-        super(AddressIcon.IMAGE_URL);
-        this._addressModel = addressModel;
+        super(MultiselectboxIcon.IMAGE_URL);
+        this._multiselectboxModel = multiselectModel;
         this._topic = topic;
         this._readOnly = readOnly;
         this._isProfile = isProfile;
-
+    
         const image = this.getImage();
         this._registerEvents();
     }
@@ -44,7 +44,7 @@ class AddressIcon extends Icon {
       if (this._isProfile === false && !this._readOnly) {
         // Add on click event to open the editor ...
         this.addEvent('click', (event) => {
-          me._topic.showPropertiesEditor(TopicControlFactory.Textfield.id);
+          me._topic.showPropertiesEditor();
           event.stopPropagation();
         });
       }
@@ -68,13 +68,12 @@ class AddressIcon extends Icon {
       });
     }
 
-
     _buildTooltipContent() {
       let result;
       if(!this._isProfile) {
         if ($('body').find('#popoverProperties').length === 1) {
           const text = $('body').find('#popoverProperties');
-          text.text(this._addressModel.getKey());
+          text.text(this._multiselectboxModel.getKey());
           return text;
         }
         result = $('<div id="popoverProperties"></div>').css({ padding: '5px', width: '250px' });
@@ -90,7 +89,7 @@ class AddressIcon extends Icon {
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word',
         });
-        const req_value = $('<div class="col-md-6"></div>').text(this._addressModel.getRequired())
+        const req_value = $('<div class="col-md-6"></div>').text(this._multiselectboxModel.getRequired())
         .css({
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word',
@@ -110,7 +109,7 @@ class AddressIcon extends Icon {
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word',
         });
-        const key_value = $('<div class="col-md-6"></div>').text(this._addressModel.getKey())
+        const key_value = $('<div class="col-md-6"></div>').text(this._multiselectboxModel.getKey())
         .css({
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word',
@@ -130,7 +129,7 @@ class AddressIcon extends Icon {
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word',
         });
-        const desc_value = $('<div class="col-md-6"></div>').text(this._addressModel.getDescription())
+        const desc_value = $('<div class="col-md-6"></div>').text(this._multiselectboxModel.getDescription())
         .css({
           'white-space': 'pre-wrap',
           'word-wrap': 'break-word',
@@ -140,9 +139,10 @@ class AddressIcon extends Icon {
         desc.append(desc_value);
         result.append(desc);
       } else {
+
         if ($('body').find('#popoverProperties').length === 1) {
           const text = $('body').find('#popoverProperties');
-          text.text(this._addressModel.getKey());
+          text.text(this._multiselectboxModel.getKey());
           return text;
         }
         result = $('<div id="popoverProperties"></div>').css({ padding: '5px', width: '250px' });
@@ -159,18 +159,30 @@ class AddressIcon extends Icon {
           gra = null;
         }
 
+        const m: string[] = Array.from(val);
+        const sort = m.sort((a,b)=>Number(a) - Number(b));
+
+        let list = '<div class="row">';
+        let x = 1;
+        this._topic.getChildren().forEach(el => {
+          const found = sort.find(v => Number(v) === x);
+          if(found) {
+            list += '<div class="col-md-2">' + feather.icons.check.toSvg() + '</div><div class="col-md-10">' + el.getText() + '</div>'         
+          } else {
+            list += '<div class="col-md-2">' + feather.icons.x.toSvg() + '</div><div class="col-md-10">' + el.getText() + '</div>'
+          }
+          x++;
+        })
+        list += '</div>';
+
         if((val === null && gra === null) || (val === null && gra !== null)) {
           textfield_val = $('<div class="col-md-12"></div>').text($msg('NOT_FILLED'));
         } else if (gra === 'NONE' || (!isFriend && gra === 'FRIENDS')) {
           textfield_val = $('<div class="col-md-12"></div>').text($msg('NOT_VISIBLE'));
         } else if(isFriend && gra === 'FRIENDS') {
-          const address = val.split(',');
-          const formatedAddress = address[0] + '<br/>' + address[1] + '<br/>' + address[2];
-          textfield_val = $('<div class="col-md-12"></div>').html(formatedAddress);
+          textfield_val = $('<div class="col-md-12"></div>').html(list);
         } else if(gra === 'ALL' || (val !== null && gra === null)) {
-          const address = val.split(',');
-          const formatedAddress = address[0] + '<br/>' + address[1] + '<br/>' + address[2];
-          textfield_val = $('<div class="col-md-12"></div>').html(formatedAddress);
+          textfield_val = $('<div class="col-md-12"></div>').html(list);
         }
         result.append(textfield_val);
       }
@@ -180,7 +192,7 @@ class AddressIcon extends Icon {
 
     remove() {
         const actionDispatcher = ActionDispatcher.getInstance();
-        const controlId = this._addressModel.getId();
+        const controlId = this._multiselectboxModel.getId();
         const topicId = this._topic.getId();
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
@@ -190,14 +202,14 @@ class AddressIcon extends Icon {
     }
 
     getControlModel(): ControlModel {
-        return this._addressModel;
+        return this._multiselectboxModel;
     }
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
     }
 
-    static IMAGE_URL = AddressImage;
+    static IMAGE_URL = MultiselectboxImage;
   }
   
-  export default AddressIcon;
+  export default MultiselectboxIcon;

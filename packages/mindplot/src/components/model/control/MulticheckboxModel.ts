@@ -18,18 +18,18 @@
 import { $assert } from '@wisemapping/core-js';
 import ControlModel from '../ControlModel';
 
-class AddressModel extends ControlModel {
+class MulticheckboxModel extends ControlModel {
   constructor(attributes) {
-    super('address');
-    const addressText = attributes.text ? attributes.text : ' ';
-    this.setText(addressText);
+    super('multicheckbox');
+    const textfieldText = attributes.text ? attributes.text : ' ';
+    this.setText(textfieldText);
     const keyText = attributes.key ? attributes.key : ' ';
     this.setKey(keyText);
     const requiredText = attributes.required ? attributes.required : false;
     this.setRequired(requiredText);
     const descriptionText = attributes.description ? attributes.description : '';
     this.setDescription(descriptionText);
-  }
+  } 
 
   /** */
   getText(): string {
@@ -69,4 +69,4 @@ class AddressModel extends ControlModel {
   }
 }
 
-export default AddressModel;
+export default MulticheckboxModel;
