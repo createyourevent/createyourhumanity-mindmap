@@ -1,6 +1,6 @@
 {
     "name": "@wisemapping/web2d",
-    "version": "0.4.5",
+    "version": "1.0.0",
     "description": "WiseMapping - Web2D Render Library",
     "homepage": "http://www.wisemapping.org/",
     "license": "MIT",
@@ -11,7 +11,7 @@
     ],
     "private": false,
     "publishConfig": {
-        "registry": "https://registry.yarnpkg.com"
+        "registry": "https://verdaccio.heartfull-mind.space/"
     },
     "repository": {
         "type": "git",
