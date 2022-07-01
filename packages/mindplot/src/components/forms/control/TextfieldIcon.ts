@@ -41,7 +41,7 @@ class TextfieldIcon extends Icon {
       this._image.setCursor('pointer');
       const me = this;
   
-      if (this._isProfile === false && !this._readOnly) {
+      if (this._isProfile === false || !this._readOnly) {
         // Add on click event to open the editor ...
         this.addEvent('click', (event) => {
           me._topic.showPropertiesEditor(TopicControlFactory.Textfield.id);

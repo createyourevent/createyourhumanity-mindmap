@@ -59,12 +59,16 @@ class CreateYourHumanityPersistenceManager extends PersistenceManager {
       const persistence = this;
       const csrf = this.getCSRFToken();
       fetch(
-        `${this.documentUrl.replace('{id}', mapId)}/saveXml?_csrf=${csrf}`,
+        `${this.documentUrl.replace('{id}', mapId)}/saveXml`,
         {
           method: 'PUT',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          referrerPolicy: 'no-referrer',
           // Blob helps to resuce the memory on large payload.
           body: new Blob([JSON.stringify(data)], { type: 'text/plain' }),
-          headers: { 'Content-Type': 'application/json; charset=utf-8', Accept: 'application/json', 'X-CSRF-Token': this.getCSRFToken() },
         },
       ).then(async (response: Response) => {
         if (response.ok) {
@@ -126,7 +130,7 @@ class CreateYourHumanityPersistenceManager extends PersistenceManager {
       this.lockUrl.replace('{id}', mapId),
       {
         method: 'PUT',
-        headers: { 'Content-Type': 'text/plain', 'X-CSRF-Token': this.getCSRFToken() },
+        headers: { 'Content-Type': 'text/plain' },
         body: 'false',
       },
     );
@@ -152,7 +156,7 @@ class CreateYourHumanityPersistenceManager extends PersistenceManager {
       url: `${this.documentUrl.replace('{id}', mapId)}/xml`,
       method: 'get',
       async: false,
-      headers: { 'Content-Type': 'text/plain', Accept: 'application/xml', 'X-CSRF-Token': this.getCSRFToken() },
+      dataType: "xml",
       success(responseText) {
         xml = responseText;
       },

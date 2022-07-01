@@ -43,7 +43,8 @@ const options: EditorOptions = {
   mapTitle: "Develop Mindnap",
   mode: 'viewonly',
   locale: 'en',
-  enableKeyboardEvents: true
+  enableKeyboardEvents: true,
+  isProfile: false,
 };
 
 ReactDOM.render(

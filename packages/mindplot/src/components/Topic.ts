@@ -34,7 +34,7 @@ import ShirinkConnector from './ShrinkConnector';
 import NoteEditor from './widget/NoteEditor';
 import ActionDispatcher from './ActionDispatcher';
 import LinkEditor from './widget/LinkEditor';
-
+import GoToTopicLinkIcon from './link/icon/GoToTopicLInkIcon';
 import TopicEventDispatcher, { TopicEvent } from './TopicEventDispatcher';
 import { TopicShape } from './model/INodeModel';
 import NodeModel from './model/NodeModel';
@@ -53,7 +53,7 @@ import TextfieldModel from './model/control/TextfieldModel';
 import TextareaModel from './model/control/TextareaModel';
 import CheckboxModel from './model/control/CheckboxModel';
 import SelectModel from './model/control/SelectModel';
-import { result, size } from 'lodash';
+import { result } from 'lodash';
 import RadiogroupModel from './model/control/RadiogroupModel';
 import OptionModel from './model/control/OptionModel';
 import RadioModel from './model/control/RadioModel';
@@ -69,7 +69,17 @@ import MulticheckboxModel from './model/control/MulticheckboxModel';
 import MultiselectboxModel from './model/control/MultiselectboxModel';
 
 
+
+
 const ICON_SCALING_FACTOR = 1.3;
+
+const TopicLinkFactory = {
+  /** the icon object */
+  LinkIcon: {
+   id: 'link',
+   icon: GoToTopicLinkIcon,
+ }
+}
 
 abstract class Topic extends NodeGraph {
   private _innerShape: ElementClass;
@@ -84,6 +94,8 @@ abstract class Topic extends NodeGraph {
   // eslint-disable-next-line no-use-before-define
   private _parent: Topic | null;
 
+  private _path: number[] | null;
+
   private _outerShape: ElementClass;
 
   private _text: Text | null;
@@ -93,6 +105,8 @@ abstract class Topic extends NodeGraph {
   private _connector: ShirinkConnector;
 
   private _outgoingLine: Line;
+
+  private _goTo: GoToTopicLinkIcon;
 
   constructor(model: NodeModel, options) {
     super(model, options);
@@ -127,6 +141,8 @@ abstract class Topic extends NodeGraph {
       event.stopPropagation();
     });
   }
+
+
 
   setShapeType(type: string): void {
     this._setShapeType(type, true);
@@ -316,6 +332,14 @@ abstract class Topic extends NodeGraph {
     return this._outerShape;
   }
 
+  setPath(path: number[]) {
+    this._path = path;
+  }
+
+  getPath() {
+    return this._path;
+  }
+
   getTextShape(): Text {
     if (!$defined(this._text)) {
       this._text = this._buildTextShape(false);
@@ -365,21 +389,28 @@ abstract class Topic extends NodeGraph {
         result.addIcon(icon, f.getType() === TopicFeatureFactory.Icon.id && !this.isReadOnly());
       });
     } else if (model.getControls().length > 0) {
+      
       // Load topic controls ...
       const modelControl = this.getModel();
       const controlsModel = modelControl.getControls();
       controlsModel.forEach((f) => {
         const icon = TopicControlFactory.createIcon(this, f, this.isReadOnly(), this.isProfile());
+        // Load GoTo Icon
+        const { icon: Icon } = TopicLinkFactory.LinkIcon;
+        const linkIcon = new Icon(this);
         switch(f.getType()) { 
           case 'textfield': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Textfield.id && !this.isReadOnly(), 'control'); 
             break;
           } 
           case 'textarea': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Textarea.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'select': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Select.id && !this.isReadOnly(), 'control');
             break; 
           } 
@@ -388,10 +419,12 @@ abstract class Topic extends NodeGraph {
             break; 
           } 
           case 'checkbox': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Checkbox.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'radiogroup': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Radiogroup.id && !this.isReadOnly(), 'control');
             break; 
           } 
@@ -400,34 +433,42 @@ abstract class Topic extends NodeGraph {
             break; 
           } 
           case 'calendar': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Calendar.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'editor': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Editor.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'time': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Time.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'address': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Address.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'keywords': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Keywords.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'ratings': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Ratings.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'multiselectbox': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Multiselectbox.id && !this.isReadOnly(), 'control');
             break; 
           } 
           case 'multicheckbox': {  
+            result.addIcon(linkIcon, false, 'link');
             result.addIcon(icon, f.getType() === TopicControlFactory.Multicheckbox.id && !this.isReadOnly(), 'control');
             break; 
           } 
@@ -485,7 +526,7 @@ abstract class Topic extends NodeGraph {
     const model = this.getModel();
     model.addControl(controlModel);
 
-    const result: Icon = TopicControlFactory.createIcon(this, controlModel, this.isReadOnly());
+    const result: Icon = TopicControlFactory.createIcon(this, controlModel, this.isReadOnly(), this.isProfile());
     iconGroup.addIcon(
       result,
       true,

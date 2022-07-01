@@ -30,6 +30,7 @@ export type EditorOptions = {
     lockedMsg?: string;
     mapTitle: string;
     enableKeyboardEvents: boolean;
+    isProfile: boolean;
 }
 
 export type EditorProps = {
@@ -65,6 +66,8 @@ const Editor = ({
             onLoad(designer);
         }
 
+
+
         // Load mindmap ...
         const instance = PersistenceManager.getInstance();
         const mindmap = instance.load(mapId);
@@ -98,7 +101,7 @@ const Editor = ({
             container: 'mindplot',
             zoom: options.zoom,
             locale: options.locale,
-            isProfile: isProfile,
+            isProfile: options.isProfile,
         });
 
         // Build designer ...

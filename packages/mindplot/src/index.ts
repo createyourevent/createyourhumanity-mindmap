@@ -34,6 +34,7 @@ import Importer from './components/import/Importer';
 import DesignerKeyboard from './components/DesignerKeyboard';
 import EditorRenderMode from './components/EditorRenderMode';
 import ImageIcon from './components/ImageIcon';
+import Topic from './components/Topic';
 
 import {
   buildDesigner,
@@ -76,4 +77,5 @@ export {
   $notify,
   $msg,
   DesignerKeyboard,
+  Topic,
 };

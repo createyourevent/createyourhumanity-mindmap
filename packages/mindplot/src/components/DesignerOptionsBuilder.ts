@@ -51,7 +51,7 @@ class OptionsBuilder {
       saveOnLoad: true,
       containerSize,
       container: 'mindplot',
-      locale: 'en',
+      locale: 'de',
       isProfile: false,
     };
 

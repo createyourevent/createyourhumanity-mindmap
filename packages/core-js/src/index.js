@@ -53,7 +53,6 @@ export const $defined = function (obj) {
 export const $assert = function (assert, message) {
     if (!$defined(assert) || !assert) {
         logStackTrace();
-        console.log(message);
         throw new Error(message);
     }
 };
