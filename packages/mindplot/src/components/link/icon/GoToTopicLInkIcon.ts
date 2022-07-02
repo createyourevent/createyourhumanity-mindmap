@@ -5,17 +5,18 @@ import { $assert } from '@wisemapping/core-js';
 import ControlModel from '../../model/ControlModel';
 import FeatureModel from '../../model/FeatureModel';
 import LayoutModel from '../../model/LayoutModel';
-import LinkModel from '../model/LinkModel'
+import GoToLinkModel from '../model/LinkModel';
 
 class GoToTopicLinkIcon extends Icon {
-    private _gotoTopicLinkModel: LinkModel;
+
+    private _gotoTopicLinkModel: GoToLinkModel;
 
     private _topic: Topic;
     
     constructor(topic: Topic) {
         $assert(topic, 'topic can not be null');
         super(GoToTopicLinkIcon.IMAGE_URL);
-        this._gotoTopicLinkModel = new LinkModel(topic);
+        this._gotoTopicLinkModel = new GoToLinkModel(topic);
         this._topic = topic;
     
         const image = this.getImage();
@@ -24,8 +25,8 @@ class GoToTopicLinkIcon extends Icon {
           window.dispatchEvent(evt);
         });
       }
-    
-      getLinkModel(): LinkModel {
+
+      getGoToLinkModel(): GoToLinkModel {
         return this._gotoTopicLinkModel;
       }
 

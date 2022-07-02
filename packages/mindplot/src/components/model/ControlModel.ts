@@ -23,7 +23,7 @@ class ControlModel {
 
   private _id: string;
 
-  private _type: ControlType;
+  private _type: ControlType | string;
 
   private _attributes;
 
@@ -39,11 +39,11 @@ class ControlModel {
      * @throws will throw an exception if type is null or undefined
      * assigns a unique id and the given type to the new model
      */
-  constructor(type: ControlType) {
+  constructor(type: ControlType | string) {
     $assert(type, 'type can not be null');
     this._id = "" + ControlModel._nextUUID();
 
-    this._type = type;
+    this._type = type; 
     this._attributes = {};
 
     // Create type method ...
@@ -87,7 +87,7 @@ class ControlModel {
     this._id = id;
   }
 
-  getType(): ControlType {
+  getType(): ControlType | string {
     return this._type;
   }
 

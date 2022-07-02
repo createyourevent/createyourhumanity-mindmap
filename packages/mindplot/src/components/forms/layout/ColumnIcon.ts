@@ -11,6 +11,7 @@ import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
 import ControlModel from '../../model/ControlModel';
 import ContainerIcon from './ContainerIcon';
+import LinkModel from '../../link/model/LinkModel';
 
 class ColumnIcon extends Icon {
 
@@ -93,7 +94,9 @@ class ColumnIcon extends Icon {
         return this._columnModel;
     }
 
-    
+    getGoToLinkModel(): LinkModel {
+      throw new Error('Method not implemented.');
+    }
 
     static IMAGE_URL = ColumnImage;
   }

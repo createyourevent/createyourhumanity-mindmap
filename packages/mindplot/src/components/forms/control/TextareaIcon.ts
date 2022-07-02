@@ -9,8 +9,12 @@ import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
 import LayoutModel from '../../model/LayoutModel';
+import LinkModel from '../../link/model/LinkModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 
 class TextareaIcon extends Icon {
+
+    private _linkModel: GoToLinkModel;
 
     private _textareaModel: ControlModel;
 
@@ -177,6 +181,7 @@ class TextareaIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._textareaModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -192,6 +197,10 @@ class TextareaIcon extends Icon {
       throw new Error('Method not implemented.');
     }
 
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
+    }
+    
     static IMAGE_URL = TextareaImage;
   }
   

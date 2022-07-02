@@ -18,27 +18,29 @@
 import { $assert, $defined } from '@wisemapping/core-js';
 import Command from '../Command';
 import CommandContext from '../CommandContext';
+import GoToLinkModel from '../link/model/LinkModel';
 import ControlModel from '../model/ControlModel';
+import LayoutModel from '../model/LayoutModel';
 
-class RemoveControlFromTopicCommand extends Command {
+class RemoveGoToLinkFromTopicCommand extends Command {
   private _topicId: number;
 
-  private _controlId: string;
+  private _layoutId: string;
 
-  private _oldControl: ControlModel;
+  private _oldLink: GoToLinkModel;
 
   /**
      * @classdesc This command handles do/undo of removing a feature from a topic, e.g. an icon or
      * a note. For a reference of existing features, refer to {@link mindplot.TopicFeature}.
      */
-  constructor(topicId: number, controlId: string) {
+  constructor(topicId: number, linkId: string) {
     $assert($defined(topicId), 'topicId can not be null');
-    $assert(controlId, 'iconModel can not be null');
+    $assert(linkId, 'linkModel can not be null');
 
     super();
     this._topicId = topicId;
-    this._controlId = controlId;
-    this._oldControl = null;
+    this._layoutId = linkId;
+    this._oldLink = null;
   }
 
   /**
@@ -46,9 +48,9 @@ class RemoveControlFromTopicCommand extends Command {
      */
   execute(commandContext: CommandContext): void {
     const topic = commandContext.findTopics([this._topicId])[0];
-    const control = topic.findControlById(this._controlId);
-    topic._removeControl(control);
-    this._oldControl = control;
+    const link = topic.findGoToLinkById(this._layoutId);
+    topic._removeGoToLink(link);
+    this._oldLink = link;
   }
 
   /**
@@ -57,9 +59,9 @@ class RemoveControlFromTopicCommand extends Command {
      */
   undoExecute(commandContext: CommandContext) {
     const topic = commandContext.findTopics([this._topicId])[0];
-    topic.addControl(this._oldControl);
-    this._oldControl = null;
+    topic.addGoToLink(this._oldLink);
+    this._oldLink = null;
   }
 }
 
-export default RemoveControlFromTopicCommand;
+export default RemoveGoToLinkFromTopicCommand;

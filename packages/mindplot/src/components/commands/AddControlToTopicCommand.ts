@@ -65,7 +65,7 @@ class AddControlToTopicCommand extends Command {
 
   undoExecute(commandContext: CommandContext) {
     const topic = commandContext.findTopics([this._topicId])[0];
-    topic.removeControl(this._controlModel);
+    topic._removeControl(this._controlModel);
   }
 }
 

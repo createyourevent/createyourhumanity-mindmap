@@ -10,9 +10,14 @@ import FloatingTip from '../../widget/FloatingTip';
 import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
 import LayoutModel from '../../model/LayoutModel';
+import LinkModel from '../../link/model/LinkModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 
 class AddressIcon extends Icon {
 
+
+    private _linkModel: GoToLinkModel;
+    
     private _addressModel: ControlModel;
 
     private _topic: Topic;
@@ -182,6 +187,7 @@ class AddressIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._addressModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -195,6 +201,10 @@ class AddressIcon extends Icon {
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
+    }
+
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
     }
 
     static IMAGE_URL = AddressImage;

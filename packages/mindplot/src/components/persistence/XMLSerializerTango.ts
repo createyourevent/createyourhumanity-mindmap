@@ -29,6 +29,7 @@ import ControlModelFactory from '../model/ControlModelFactory';
 import ControlType from '../model/ControlType';
 import LayoutModelFactory from '../model/LayoutModelFactory';
 import LayoutType from '../model/LayoutType';
+import GoToLinkModel from '../link/model/LinkModel';
 
 class XMLSerializerTango implements XMLMindmapSerializer {
   private static MAP_ROOT_NODE = 'map';
@@ -493,7 +494,12 @@ class XMLSerializerTango implements XMLMindmapSerializer {
            // Create a new element ....
            const controlType = elem.tagName as ControlType;
            const control = ControlModelFactory.createModel(controlType, attributes);
+           const l = GoToLinkModel.createModel(control, attributes);
+           l.setId(control.getId());
+           topic.addGoToLink(l);
            topic.addControl(control);
+
+
          } else if (LayoutModelFactory.isSupported(elem.tagName)) {
           // Load attributes ...
           const namedNodeMap = elem.attributes;

@@ -7,8 +7,10 @@ import ControlModel from '../model/ControlModel';
 import ActionDispatcher from '../ActionDispatcher';
 import HtmlFormModel from '../model/form/HtmlFormModel';
 import LayoutModel from '../model/LayoutModel';
+import LinkModel from '../link/model/LinkModel';
 
 class HtmlFormElementIcon extends Icon {
+
     private _htmlElementModel: FeatureModel;
 
     private _topic: Topic;
@@ -48,6 +50,10 @@ class HtmlFormElementIcon extends Icon {
       }
 
       getLayoutModel(): LayoutModel {
+        throw new Error('Method not implemented.');
+      }
+      
+      getGoToLinkModel(): LinkModel {
         throw new Error('Method not implemented.');
       }
   

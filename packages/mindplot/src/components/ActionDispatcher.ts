@@ -92,6 +92,8 @@ abstract class ActionDispatcher extends Events {
 
   abstract removeLayoutFromTopic(topicId: number, featureId: string): void;
 
+  abstract removeGoToLinkFromTopic(topicId: number, featureId: string): void;
+
   static setInstance = (dispatcher: ActionDispatcher) => {
     this._instance = dispatcher;
   };

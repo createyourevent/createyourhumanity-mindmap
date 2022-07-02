@@ -16,6 +16,7 @@
  *   limitations under the License.
  */
 import { $assert } from '@wisemapping/core-js';
+import GoToLinkModel from '../../link/model/LinkModel';
 import ControlModel from '../ControlModel';
 
 class KeywordsModel extends ControlModel {

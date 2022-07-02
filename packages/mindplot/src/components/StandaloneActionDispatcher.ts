@@ -43,8 +43,10 @@ import LayoutType from './model/LayoutType';
 import AddLayoutToTopicCommand from './commands/AddLayoutToTopicCommand';
 import ChangeLayoutToTopicCommand from './commands/ChangeLayoutToTopicCommand';
 import RemoveLayoutFromTopicCommand from './commands/RemoveLayoutFromTopicCommand';
+import RemoveGoToLinkFromTopicCommand from './commands/RemoveGoToLinkFromTopicCommand';
 
 class StandaloneActionDispatcher extends ActionDispatcher {
+  
   private _actionRunner: DesignerActionRunner;
 
   public get actionRunner(): DesignerActionRunner {
@@ -309,6 +311,12 @@ class StandaloneActionDispatcher extends ActionDispatcher {
     /** */
     removeLayoutFromTopic(topicId: number, layoutId: string) {
       const command = new RemoveLayoutFromTopicCommand(topicId, layoutId);
+      this.execute(command);
+    }
+
+      
+    removeGoToLinkFromTopic(topicId: number, linkId: string): void {
+      const command = new RemoveGoToLinkFromTopicCommand(topicId, linkId);
       this.execute(command);
     }
 

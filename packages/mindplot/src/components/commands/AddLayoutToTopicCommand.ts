@@ -65,7 +65,7 @@ class AddLayoutToTopicCommand extends Command {
 
   undoExecute(commandContext: CommandContext) {
     const topic = commandContext.findTopics([this._topicId])[0];
-    topic.removeLayout(this._layoutModel);
+    topic._removeLayout(this._layoutModel);
   }
 }
 

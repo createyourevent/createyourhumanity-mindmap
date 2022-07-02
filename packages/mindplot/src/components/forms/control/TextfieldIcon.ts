@@ -10,8 +10,12 @@ import FloatingTip from '../../widget/FloatingTip';
 import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
 import LayoutModel from '../../model/LayoutModel';
+import LinkModel from '../../link/model/LinkModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 
 class TextfieldIcon extends Icon {
+  
+    private _linkModel: GoToLinkModel;
 
     private _textfieldModel: ControlModel;
 
@@ -179,6 +183,7 @@ class TextfieldIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._textfieldModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -192,6 +197,10 @@ class TextfieldIcon extends Icon {
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
+    }
+
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
     }
 
     static IMAGE_URL = TextFieldImage;

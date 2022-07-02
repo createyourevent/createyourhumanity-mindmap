@@ -31,6 +31,7 @@ import SizeType from './SizeType';
 import FeatureModel from './model/FeatureModel';
 import ControlModel from './model/ControlModel';
 import LayoutModel from './model/LayoutModel';
+import GoToLinkModel from './link/model/LinkModel';
 
 const ORDER_BY_TYPE = new Map<string, number>();
 ORDER_BY_TYPE.set('icon', 0);
@@ -127,6 +128,11 @@ class IconGroup {
     this._removeIcon(icon);
   }
 
+  removeIconByGoToLinkModel(model: GoToLinkModel) {
+    const icon = this. _findIconFromGoToLinkModel(model);
+    this._removeIcon(icon);
+  }
+
   removeIconByLayoutModel(layoutModel: LayoutModel) {
     $assert(layoutModel, 'layoutModel can not be null');
 
@@ -144,6 +150,22 @@ class IconGroup {
         result = icon;
       }
     });
+
+    if (result == null) {
+      throw new Error(`Icon can no be found:${iconModel.getId()} Icons:${this._icons}`);
+    }
+
+    return result;
+  }
+
+  private _findIconFromGoToLinkModel(iconModel: GoToLinkModel) {
+    let result = null;
+
+      const elModel = this._icons[0].getGoToLinkModel();
+
+      //if (elModel.getId() === iconModel.getId()) {
+        result = this._icons[0];
+      //}
 
     if (result == null) {
       throw new Error(`Icon can no be found:${iconModel.getId()} Icons:${this._icons}`);

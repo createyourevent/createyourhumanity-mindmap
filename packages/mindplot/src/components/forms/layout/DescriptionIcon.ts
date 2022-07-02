@@ -10,6 +10,7 @@ import FloatingTip from '../../widget/FloatingTip';
 import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
 import ControlModel from '../../model/ControlModel';
+import LinkModel from '../../link/model/LinkModel';
 
 class DescriptionIcon extends Icon {
 
@@ -92,7 +93,9 @@ class DescriptionIcon extends Icon {
         return this._descriptionModel;
     }
 
-    
+    getGoToLinkModel(): LinkModel {
+      throw new Error('Method not implemented.');
+    }
 
     static IMAGE_URL = TextImage;
   }

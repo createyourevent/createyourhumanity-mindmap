@@ -10,6 +10,8 @@ import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
 import LayoutModel from '../../model/LayoutModel';
 import Stars from '@mat3e-ux/stars/component';
+import LinkModel from '../../link/model/LinkModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 Stars.register('m5-stars');
 
 class RatingsIcon extends Icon {
@@ -23,6 +25,8 @@ class RatingsIcon extends Icon {
     private _isProfile: boolean;
 
     private _tip: FloatingTip;
+    
+    private _linkModel: GoToLinkModel;
     
     constructor(topic: Topic, ratingsModel: RatingsModel, readOnly: boolean, isProfile?: boolean) {
         $assert(topic, 'topic can not be null');
@@ -181,6 +185,7 @@ class RatingsIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._ratingsModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -194,6 +199,10 @@ class RatingsIcon extends Icon {
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
+    }
+
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
     }
 
     static IMAGE_URL = RatingsImage;

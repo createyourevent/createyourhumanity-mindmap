@@ -9,6 +9,8 @@ import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
 import LayoutModel from '../../model/LayoutModel';
+import LinkModel from '../../link/model/LinkModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 
 class SelectIcon extends Icon {
 
@@ -21,6 +23,8 @@ class SelectIcon extends Icon {
     private _isProfile: boolean;
 
     private _tip: FloatingTip;
+
+    private _linkModel: GoToLinkModel;
     
     constructor(topic: Topic, textfieldModel: SelectModel, readOnly: boolean, isProfile?: boolean) {
         $assert(topic, 'topic can not be null');
@@ -185,6 +189,7 @@ class SelectIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._selectModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -198,6 +203,10 @@ class SelectIcon extends Icon {
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
+    }
+
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
     }
 
     static IMAGE_URL = SelectImage;

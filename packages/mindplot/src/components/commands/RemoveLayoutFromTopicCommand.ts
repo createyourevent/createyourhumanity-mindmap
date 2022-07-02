@@ -48,7 +48,7 @@ class RemoveLayoutFromTopicCommand extends Command {
   execute(commandContext: CommandContext): void {
     const topic = commandContext.findTopics([this._topicId])[0];
     const layout = topic.findLayoutById(this._layoutId);
-    topic.removeLayout(layout);
+    topic._removeLayout(layout);
     this._oldLayout = layout;
   }
 

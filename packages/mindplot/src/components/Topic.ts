@@ -43,6 +43,7 @@ import Workspace from './Workspace';
 import LayoutManager from './layout/LayoutManager';
 import NoteModel from './model/NoteModel';
 import LinkModel from './model/LinkModel';
+import GoToLinkModel from './link/model/LinkModel';
 import SizeType from './SizeType';
 import FeatureModel from './model/FeatureModel';
 import Icon from './Icon';
@@ -543,7 +544,7 @@ abstract class Topic extends NodeGraph {
   }
 
   /** */
-  removeControl(controlModel: ControlModel): void {
+  _removeControl(controlModel: ControlModel): void {
     $assert(controlModel, 'controlModel could not be null');
 
     // Removing the icon from MODEL
@@ -581,8 +582,32 @@ abstract class Topic extends NodeGraph {
     return model.findFeatureById(id);
   }
 
+  removeFeature(model: FeatureModel | ControlModel | LayoutModel | GoToLinkModel) {
+    if(model instanceof GoToLinkModel) {
+      this._removeLink(model);
+    } else if(model instanceof FeatureModel) {
+      this._removeFeature(model);
+    } else if(model instanceof ControlModel) {
+      this._removeControl(model);
+    } else if(model instanceof LayoutModel) {
+      this._removeLayout(model);
+    }
+  }
+
   /** */
-  removeFeature(featureModel: FeatureModel): void {
+  _removeLink(featureModel: GoToLinkModel): void {
+    $assert(featureModel, 'featureModel could not be null');
+
+    // Removing the icon from UI
+    const iconGroup = this.getIconGroup();
+    if ($defined(iconGroup)) {
+      iconGroup.removeIconByGoToLinkModel(featureModel);
+    }
+    this.adjustShapes();
+  }  
+
+  /** */
+  _removeFeature(featureModel: FeatureModel): void {
     $assert(featureModel, 'featureModel could not be null');
 
     // Removing the icon from MODEL
@@ -617,13 +642,37 @@ abstract class Topic extends NodeGraph {
     return result;
   }
 
+  addGoToLink(linkModel: GoToLinkModel): Icon {
+    const iconGroup = this.getOrBuildIconGroup();
+    this.closeEditors();
+
+    // Update model ...
+    const model = this.getModel();
+    model.addGoToLink(linkModel);
+
+    const result: Icon = TopicLayoutFactory.createIcon(this, linkModel, this.isReadOnly());
+    iconGroup.addIcon(
+      result,
+      true,
+      'layout'
+    );
+
+    this.adjustShapes();
+    return result;
+  }
+
   findLayoutById(id: string) {
     const model = this.getModel();
     return model.findLayoutById(id);
   }
 
+  findGoToLinkById(id: string) {
+    const model = this.getModel();
+    return model.findGoToLinkById(id);
+  }
+
   /** */
-  removeLayout(layoutModel: LayoutModel): void {
+  _removeLayout(layoutModel: LayoutModel): void {
     $assert(layoutModel, 'layoutModel could not be null');
 
     // Removing the icon from MODEL
@@ -637,6 +686,22 @@ abstract class Topic extends NodeGraph {
     }
     this.adjustShapes();
   }
+
+    /** */
+    _removeGoToLink(linkModel: GoToLinkModel): void {
+      $assert(linkModel, 'layoutModel could not be null');
+  
+      // Removing the icon from MODEL
+      const model = this.getModel();
+      model.removeGoToLink(linkModel);
+  
+      // Removing the icon from UI
+      const iconGroup = this.getIconGroup();
+      if ($defined(iconGroup)) {
+        iconGroup.removeIconByGoToLinkModel(linkModel);
+      }
+      this.adjustShapes();
+    }
 
 
   addRelationship(relationship: Relationship) {

@@ -923,27 +923,29 @@ class Designer extends Events {
 
   addHtml(type: string): void {
     const topicsIds = this.getModel().filterTopicsIds();
-    if (topicsIds.length > 0) {
-      if(type == 'form') {
-        this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlForm.id as FeatureType, {
-          id: type,
-        });
-      } else if(type == 'tabs_form') {
-        this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlForm.id as FeatureType, {
-          id: type,
-        });
-      } else if(type === 'multi_step_form') {
-        this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlForm.id as FeatureType, {
-          id: type,
-        });
-      } else if(type === 'tabs_plus') {
-        this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlTabsPlus.id as FeatureType, {
-          id: type,
-        });
-      } else if(type === 'step') {
-        this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlStep.id as FeatureType, {
-          id: type,
-        });
+    for(let i = 0; i < topicsIds.length; i++) {
+      if (topicsIds.length > 0) {
+        if(type == 'form') {
+          this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlForm.id as FeatureType, {
+            id: type,
+          });
+        } else if(type == 'tabs_form') {
+          this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlForm.id as FeatureType, {
+            id: type,
+          });
+        } else if(type === 'multi_step_form') {
+          this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlForm.id as FeatureType, {
+            id: type,
+          });
+        } else if(type === 'tabs_plus') {
+          this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlTabsPlus.id as FeatureType, {
+            id: type,
+          });
+        } else if(type === 'step') {
+          this._actionDispatcher.addFeatureToTopic(topicsIds[0], TopicFeatureFactory.HtmlStep.id as FeatureType, {
+            id: type,
+          });
+        }
       }
     }
   }
@@ -951,67 +953,69 @@ class Designer extends Events {
 
   addControl(type: string): void {
     const topicsIds = this.getModel().filterTopicsIds();
-    if (topicsIds.length > 0) {
-      if(type == 'textfield') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Textfield.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'textarea') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Textarea.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'select') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Select.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'radio') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Radio.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'checkbox') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Checkbox.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'option') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Option.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'radiogroup') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Radiogroup.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'calendar') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Calendar.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'editor') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Editor.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'time') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Time.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'address') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Address.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'keywords') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Keywords.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'ratings') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Ratings.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'multicheckbox') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Multicheckbox.id as ControlType, {
-          text: type,
-        });
-      } else if(type == 'multiselect') {
-        this._actionDispatcher.addControlToTopic(topicsIds[0], TopicControlFactory.Multiselectbox.id as ControlType, {
-          text: type,
-        });
+    for(let i = 0; i < topicsIds.length; i++) {
+      if (topicsIds.length > 0) {
+        if(type == 'textfield') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Textfield.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'textarea') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Textarea.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'select') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Select.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'radio') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Radio.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'checkbox') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Checkbox.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'option') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Option.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'radiogroup') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Radiogroup.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'calendar') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Calendar.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'editor') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Editor.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'time') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Time.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'address') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Address.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'keywords') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Keywords.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'ratings') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Ratings.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'multicheckbox') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Multicheckbox.id as ControlType, {
+            text: type,
+          });
+        } else if(type == 'multiselect') {
+          this._actionDispatcher.addControlToTopic(topicsIds[i], TopicControlFactory.Multiselectbox.id as ControlType, {
+            text: type,
+          });
+        }
       }
     }
   }

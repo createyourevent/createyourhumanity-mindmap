@@ -10,10 +10,13 @@ import FloatingTip from '../../widget/FloatingTip';
 import TopicControlFactory from '../../ControlFeature';
 import { $msg } from '../../Messages';
 import LayoutModel from '../../model/LayoutModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 
 class KeywordsIcon extends Icon {
 
     private _keywordsModel: ControlModel;
+
+    private _linkModel: GoToLinkModel;
 
     private _topic: Topic;
   
@@ -187,6 +190,7 @@ class KeywordsIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._keywordsModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -200,6 +204,10 @@ class KeywordsIcon extends Icon {
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
+    }
+
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
     }
 
     static IMAGE_URL = KeywordsImage;

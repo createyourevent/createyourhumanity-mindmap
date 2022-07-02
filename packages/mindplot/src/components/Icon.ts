@@ -22,6 +22,7 @@ import SizeType from './SizeType';
 import FeatureModel from './model/FeatureModel';
 import ControlModel from './model/ControlModel';
 import LayoutModel from './model/LayoutModel';
+import GoToLinkModel from './link/model/LinkModel';
 
 abstract class Icon {
   protected _image: Image;
@@ -69,6 +70,8 @@ abstract class Icon {
   abstract getControlModel(): ControlModel;
 
   abstract getLayoutModel(): LayoutModel;
+
+  abstract getGoToLinkModel(): GoToLinkModel;
 
   static SIZE = 90;
 }

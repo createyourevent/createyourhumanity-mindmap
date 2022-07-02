@@ -28,6 +28,7 @@ import ControlModelFactory from './ControlModelFactory';
 import LayoutModel from './LayoutModel';
 import LayoutType from './LayoutType';
 import LayoutModelFactory from './LayoutModelFactory';
+import GoToLinkModel from '../link/model/LinkModel';
 
 class NodeModel extends INodeModel {
   private _properties: Record<string, string | number | boolean>;
@@ -40,6 +41,8 @@ class NodeModel extends INodeModel {
   private _controls: ControlModel[];
 
   private _layouts: LayoutModel[];
+
+  private _goToLinks: GoToLinkModel[];
 
   // eslint-disable-next-line no-use-before-define
   private _parent: NodeModel | null;
@@ -58,6 +61,7 @@ class NodeModel extends INodeModel {
     this._features = [];
     this._controls = [];
     this._layouts = [];
+    this._goToLinks = [];
   }
 
   /**
@@ -159,6 +163,13 @@ class NodeModel extends INodeModel {
     this._layouts.push(layout);
   }
 
+
+  addGoToLink(link: GoToLinkModel) {
+    $assert(link, 'link can not be null');
+    this._goToLinks.push(link);
+  }
+
+
   getLayout(): LayoutModel[] {
     return this._layouts;
   }
@@ -170,6 +181,13 @@ class NodeModel extends INodeModel {
     $assert(size - 1 === this._layouts.length, 'Could not be removed ...');
   }
 
+  removeGoToLink(link: GoToLinkModel): void {
+    $assert(link, 'link can not be null');
+    const size = this._goToLinks.length;
+    this._goToLinks = this._goToLinks.filter((f) => link.getId() !== f.getId());
+    $assert(size - 1 === this._goToLinks.length, 'Could not be removed ...');
+  }
+
   findLayoutByType(type: string): LayoutModel[] {
     $assert(type, 'type can not be null');
     return this._layouts.filter((layout) => layout.getType() === type);
@@ -179,6 +197,13 @@ class NodeModel extends INodeModel {
     $assert($defined(id), 'id can not be null');
     const result = this._layouts.filter((layout) => layout.getId() === id);
     $assert(result.length === 1, `Layout could not be found:${id}`);
+    return result[0];
+  }
+
+  findGoToLinkById(id: string): GoToLinkModel {
+    $assert($defined(id), 'id can not be null');
+    const result = this._goToLinks.filter((link) => link.getId() === id);
+    $assert(result.length === 1, `Link could not be found:${id}`);
     return result[0];
   }
 

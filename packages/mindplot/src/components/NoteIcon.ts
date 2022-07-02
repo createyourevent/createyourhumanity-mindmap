@@ -26,8 +26,10 @@ import FeatureModel from './model/FeatureModel';
 import FloatingTip from './widget/FloatingTip';
 import ControlModel from './model/ControlModel';
 import LayoutModel from './model/LayoutModel';
+import LinkModel from './link/model/LinkModel';
 
 class NoteIcon extends Icon {
+
   private _linksModel: NoteModel;
 
   private _topic: Topic;
@@ -97,6 +99,10 @@ class NoteIcon extends Icon {
   }
 
   getLayoutModel(): LayoutModel {
+    throw new Error('Method not implemented.');
+  }
+
+  getGoToLinkModel(): LinkModel {
     throw new Error('Method not implemented.');
   }
 

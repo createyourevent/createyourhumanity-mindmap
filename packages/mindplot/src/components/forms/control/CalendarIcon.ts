@@ -9,8 +9,12 @@ import ActionDispatcher from '../../ActionDispatcher';
 import { $msg } from '../../Messages';
 import FloatingTip from '../../widget/FloatingTip';
 import LayoutModel from '../../model/LayoutModel';
+import LinkModel from '../../link/model/LinkModel';
+import GoToLinkModel from '../../link/model/LinkModel';
 
 class CalendarIcon extends Icon {
+
+    private _linkModel: GoToLinkModel;
 
     private _calendarModel: ControlModel;
 
@@ -178,6 +182,7 @@ class CalendarIcon extends Icon {
         const actionDispatcher = ActionDispatcher.getInstance();
         const controlId = this._calendarModel.getId();
         const topicId = this._topic.getId();
+        actionDispatcher.removeGoToLinkFromTopic(topicId, controlId);
         actionDispatcher.removeControlFromTopic(topicId, controlId);
       }
 
@@ -191,6 +196,10 @@ class CalendarIcon extends Icon {
 
     getLayoutModel(): LayoutModel {
       throw new Error('Method not implemented.');
+    }
+
+    getGoToLinkModel(): GoToLinkModel {
+      return this._linkModel;
     }
 
     static IMAGE_URL = CalendarImage;
