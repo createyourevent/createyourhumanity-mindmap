@@ -137,7 +137,9 @@ class Designer extends Events {
     this._clipboard = [];
 
     // Hack: There are static reference to designer variable. Needs to be reviewed.
-    global.designer = this;
+    if(!global.designer) {
+      global.designer = this;
+    }
 
   }
 

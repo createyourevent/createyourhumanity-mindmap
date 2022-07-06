@@ -77,11 +77,13 @@ class DesignerKeyboard extends Keyboard {
         event.stopPropagation();
       },
     );
+    /*
     this.addShortcut(
       ['enter'], () => {
         designer.createSiblingForSelectedNode();
       },
     );
+    */
     this.addShortcut(
       ['insert'], (event: Event) => {
         designer.createChildForSelectedNode();
@@ -295,6 +297,7 @@ class DesignerKeyboard extends Keyboard {
       }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      /*
       const jq: any = $;
       const specialKey = jq.hotkeys.specialKeys[keyCode];
       if (['enter', 'capslock'].indexOf(specialKey) === -1 && !jq.hotkeys.shiftNums[keyCode]) {
@@ -308,6 +311,7 @@ class DesignerKeyboard extends Keyboard {
           event.stopPropagation();
         }
       }
+      */
     });
   }
 

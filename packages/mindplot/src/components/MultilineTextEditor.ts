@@ -64,7 +64,7 @@ class MultilineTextEditor extends Events {
         case 'esc':
           this.close(false);
           break;
-        case 'enter': {
+        case 'home': {
           if (event.metaKey || event.ctrlKey) {
             // Add return ...
             const text = this._getTextAreaText();
@@ -165,7 +165,7 @@ class MultilineTextEditor extends Events {
       $('body').append(containerElem);
 
       this._containerElem = containerElem;
-      this._registerEvents(containerElem);
+      // this._registerEvents(containerElem);
       this._showEditor(text);
     }
   }
