@@ -45,6 +45,7 @@ const options: EditorOptions = {
 
 const values = JSON.parse('{"21":2,"22":"","25":"supi ....","26":"klslkjfsjdlk","27":true,"42":"sw-dev","46":"45kg","47":"34cm","48":"supi dupi hahahaha....dfgdfgdfg","56":"<p>srg</p><p>sdsfsdf</p>","57":"13:14","58":[{"display":"Test","value":"Test"},{"display":"Test2","value":"Test2"},{"display":"Test3","value":"Test3"},{"display":"Test4","value":"Test4"}],"59":"Zentralstrasse 41, 8212 Neuhausen am Rheinfall, Schweiz","66":2,"67":{"1":true,"2":false,"3":true,"4":false},"72":[3],"77":"2022-06-16","Geschlecht":"1"}');
 const grants = JSON.parse('{}');
+const visible = JSON.parse('{"122":"visible_visible","139":"visible_visible","140":"visible_visible","141":"visible_not-visible","142":"visible_not-visible","158":"visible_visible"}');
 const isFriend = true;
 
 ReactDOM.render(
@@ -53,6 +54,7 @@ ReactDOM.render(
     options={options}
     values={values}
     grants={grants}
+    visible={visible}
     isFriend={isFriend}
     persistenceManager={persistence}
     onAction={(action) => console.log('action called:', action)}

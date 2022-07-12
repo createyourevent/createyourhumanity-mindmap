@@ -25,12 +25,18 @@ import HtmlTabsFormElementIcon from './forms/HtmlTabsFormElementIcon';
 import HtmlMultistepFormElementIcon from './forms/HtmlMultistepFormElementIcon';
 import HtmlTabsPlusIcon from './forms/HtmlTabsPlusIcon';
 import HtmlStepIcon from './forms/HtmlStepIcon';
+import VisibleIcon from './VisibleIcon';
 
 const TopicFeatureFactory = {
  /** the icon object */
  Icon: {
   id: 'icon',
   icon: ImageIcon,
+},
+
+Visible: {
+  id: 'visible', 
+  icon: VisibleIcon,
 },
 
 /** the link object */

@@ -38,6 +38,7 @@ export type EditorProps = {
     options: EditorOptions;
     values: Map<string, string> | null;
     grants: Map<string, string> | null;
+    visible: Map<string, string> | null;
     isFriend: boolean;
     persistenceManager: PersistenceManager;
     onAction: (action: ToolbarActionType) => void;
@@ -49,6 +50,7 @@ const Editor = ({
     options,
     values,
     grants,
+    visible,
     isFriend,
     persistenceManager,
     onAction,
@@ -71,7 +73,7 @@ const Editor = ({
         // Load mindmap ...
         const instance = PersistenceManager.getInstance();
         const mindmap = instance.load(mapId);
-        designer.loadMap(mindmap, values, grants, isFriend);
+        designer.loadMap(mindmap, values, grants, isFriend, visible);
 
         if (options.locked) {
             $notify(options.lockedMsg, false);
@@ -87,7 +89,7 @@ const Editor = ({
     }, [options.enableKeyboardEvents]);
 
     let isProfile: boolean;
-    if(values && grants) {
+    if(values && grants && visible) {
         isProfile = true;
     } else {
         isProfile = false;

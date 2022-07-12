@@ -7,8 +7,11 @@ export default class GoToLinkModel {
 
     private _id: string;
 
+    private _modelType: string;
+
     constructor(topic: Topic) {
         this._topic = topic;
+        this._modelType = 'GoToLinkModel';
     }
 
     public getPath(): number[] {
@@ -35,5 +38,9 @@ export default class GoToLinkModel {
 
   setId(id: string) {
     this._id = id;
+  }
+
+  getModelType() {
+    return this._modelType;
   }
 }

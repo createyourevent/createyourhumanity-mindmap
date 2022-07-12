@@ -27,6 +27,8 @@ class FeatureModel {
 
   private _attributes;
 
+  private _modelType: string;
+
   /**
      * @constructs
      * @param type
@@ -36,7 +38,7 @@ class FeatureModel {
   constructor(type: FeatureType) {
     $assert(type, 'type can not be null');
     this._id = FeatureModel._nextUUID();
-
+    this._modelType = 'FeatureModel';
     this._type = type;
     this._attributes = {};
 
@@ -46,6 +48,10 @@ class FeatureModel {
 
   getAttributes() {
     return { ...this._attributes };
+  }
+
+  getModelType() {
+    return this._modelType;
   }
 
   static capitalize(str: string) {

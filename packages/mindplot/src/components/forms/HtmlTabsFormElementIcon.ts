@@ -25,7 +25,8 @@ class HtmlTabsFormElementIcon extends Icon {
         this._htmlElementModel = htmlElementModel;
         this._topic = topic;
         this._readOnly = readOnly;
-    
+        this._topic.adjustShapes();
+        
         const image = this.getImage();
         image.addEvent('click', () => { 
           this.remove();

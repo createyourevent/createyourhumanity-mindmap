@@ -42,6 +42,8 @@ abstract class NodeGraph implements CreateYourHumanityInterface {
   
   _grant: string;
 
+  _visible: string
+
   _isFriend: boolean
 
   constructor(nodeModel: NodeModel, options) {
@@ -152,6 +154,14 @@ abstract class NodeGraph implements CreateYourHumanityInterface {
 
   setFriend(isFriend: boolean) {
     this._isFriend = isFriend
+  }
+
+  getVisible() {
+    return this._visible;
+  }
+
+  setVisible(visible: string) {
+    this._visible = visible;
   }
 
   getId(): number {

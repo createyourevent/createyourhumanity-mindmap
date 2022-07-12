@@ -60,6 +60,9 @@ import TopicControlFactory from './ControlFeature';
 import ControlType from './model/ControlType';
 import LayoutType from './model/LayoutType';
 import TopicLayoutFactory from './LayoutFeature';
+import FeatureModelFactory from './model/FeatureModelFactory';
+import NodeGraph from './NodeGraph';
+import VisibleIcon from './VisibleIcon';
 
 class Designer extends Events {
   private _mindmap: Mindmap;
@@ -141,6 +144,44 @@ class Designer extends Events {
       global.designer = this;
     }
 
+    window.addEventListener('VisibleData', (e: CustomEvent) => {
+      if (e.detail.topic && e.detail.iconType) {
+        const topic = e.detail.topic;
+        const iconType = e.detail.iconType;
+        const n: Topic = this.getModel().findTopicById(Number(topic)); 
+        this.domWalker(n, iconType);
+        // this.domParentWalker(n, iconType);
+        e.stopPropagation();
+      }
+    });
+  }
+
+  domWalker(node, iconType) {
+    const f = node.getModel().getFeatures()[0];
+    if(f) {
+      this.setVisible(node, iconType);
+    }
+    if (node.getChildren().length > 0) {
+      node.getChildren().forEach(childNode => {
+        this.domWalker(childNode, iconType);
+      });
+    }
+  }
+
+  domParentWalker(node, iconType) {
+    if(node.getParent() != null) {
+      this.setVisible(node, iconType);
+    }
+    if (node.getParent() != null) {
+        this.domParentWalker(node.getParent(), iconType);
+    }
+  }
+
+  setVisible(node: Topic, iconType): void {
+    const vi = node.getVisibleIcon();
+    const img = VisibleIcon.getImageUrl(iconType);
+    vi.getIcons()[0].getImage().setHref(img);
+    node.adjustShapes();
   }
 
   private _registerWheelEvents(): void {
@@ -578,7 +619,7 @@ class Designer extends Events {
          * @param {mindplot.Mindmap} mindmap
          * @throws will throw an error if mindmapModel is null or undefined
          */
-  loadMap(mindmap: Mindmap, values?: Map<string, string>, grants?: Map<string, string>, isFriend?: boolean): void {
+  loadMap(mindmap: Mindmap, values?: Map<string, string>, grants?: Map<string, string>, isFriend?: boolean, visible?: Map<string, string>): void {
     $assert(mindmap, 'mindmapModel can not be null');
     this._mindmap = mindmap;
 
@@ -592,10 +633,13 @@ class Designer extends Events {
       if (topic) {
         topic.setPosition(event.getPosition());
         topic.setOrder(event.getOrder());
-        if(values && grants) {
+        if(values && grants && visible) {
           topic.setValue(values[id+'']);
           topic.setGrant(grants[id+'']);
           topic.setFriend(isFriend);
+          topic.setVisible(visible[id]);
+          topic.getOrBuildVisibleIcon();
+          topic.adjustShapes();
         }
       }
     });

@@ -27,6 +27,8 @@ class ControlModel {
 
   private _attributes;
 
+  private _modelType: string;
+
   private _required: boolean;
 
   private _key: string;
@@ -42,12 +44,16 @@ class ControlModel {
   constructor(type: ControlType | string) {
     $assert(type, 'type can not be null');
     this._id = "" + ControlModel._nextUUID();
-
+    this._modelType = 'ControlModel';
     this._type = type; 
     this._attributes = {};
 
     // Create type method ...
     this[`is${ControlModel.capitalize(type)}Model`] = () => true;
+  }
+
+  getModelType() {
+    return this._modelType;
   }
 
   getAttributes() {

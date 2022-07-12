@@ -9,6 +9,7 @@ import HtmlStepModel from './form/HtmlStepModel';
 import HtmlTabsPlusModel from './form/HtmlTabsPlusModel';
 import HtmlTabsFormModel from './form/HtmlTabsFormModel';
 import HtmlMultistepFormModel from './form/HtmlMultistepFormModel';
+import VisibleIconModel from './VisibleIconModel';
 
 interface NodeById {
   id: FeatureType,
@@ -40,6 +41,9 @@ class FeatureModelFactory {
   }, {
     id: 'htmlFormTab',
     model: HtmlTabsPlusModel,
+  }, {
+    id: 'visible',
+    model: VisibleIconModel,
   }];
 
   static createModel(type: FeatureType, attributes): FeatureModel {

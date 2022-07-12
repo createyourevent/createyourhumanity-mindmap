@@ -68,9 +68,10 @@ import RatingsModel from './model/control/RatingsModel';
 import TimeModel from './model/control/TimeModel';
 import MulticheckboxModel from './model/control/MulticheckboxModel';
 import MultiselectboxModel from './model/control/MultiselectboxModel';
+import FeatureModelFactory from './model/FeatureModelFactory';
 
 
-
+type ModelType = FeatureModel | ControlModel | LayoutModel | GoToLinkModel;
 
 const ICON_SCALING_FACTOR = 1.3;
 
@@ -102,6 +103,8 @@ abstract class Topic extends NodeGraph {
   private _text: Text | null;
 
   private _iconsGroup: IconGroup;
+
+  private _visibleIcon: IconGroup;
 
   private _connector: ShirinkConnector;
 
@@ -368,11 +371,56 @@ abstract class Topic extends NodeGraph {
     return this._iconsGroup;
   }
 
+  getVisibleIcon(): IconGroup {
+    return this._visibleIcon;
+  }
+
   getHtmlType() {
     const model = this.getModel();
     let result = model.getHtmlType();
     return result;
   }
+
+  getOrBuildVisibleIcon(): Group {
+    if (!$defined(this._visibleIcon)) {
+      this._visibleIcon = this._buildVisibleIcon();
+      const group = this.get2DElement();
+      group.append(this._visibleIcon.getNativeElement());
+      this._visibleIcon.moveToFront();
+    }
+    return this._visibleIcon;
+  }
+
+      private _buildVisibleIcon(): Group {
+        const textHeight = this.getTextShape().getFontHeight();
+        const iconSize = textHeight * ICON_SCALING_FACTOR;
+        const result = new IconGroup(this.getId(), iconSize);
+        const padding = TopicStyle.getInnerPadding(this);
+        result.setPosition(padding, padding);
+    
+        // Load topic features ...
+        const model = this.getModel();
+        if (model.getFeatures().length > 0) {
+          const featuresModel = model.getFeatures();
+          featuresModel.forEach((f) => {
+            if(f.getType() === 'htmlForm' || f.getType() === 'htmlFormTab' || f.getType() === 'htmlFormStep') {
+              const { icon: Icon } = TopicFeatureFactory.Visible;
+              let visibleIcon;
+              const a = super.getVisible();
+              if(a === 'visible_visible') {
+                visibleIcon = new Icon(this, FeatureModelFactory.createModel('visible', {id: 'visible_visible'}) , false);
+              } else {
+                visibleIcon = new Icon(this, FeatureModelFactory.createModel('visible', {id: 'visible_not-visible'}) , false);
+              }
+              result.addIcon(visibleIcon, false, 'visible');
+            }
+          });
+        } 
+        return result;
+      }
+
+
+
 
   private _buildIconGroup(): Group {
     const textHeight = this.getTextShape().getFontHeight();
@@ -582,15 +630,18 @@ abstract class Topic extends NodeGraph {
     return model.findFeatureById(id);
   }
 
-  removeFeature(model: FeatureModel | ControlModel | LayoutModel | GoToLinkModel) {
-    if(model instanceof GoToLinkModel) {
-      this._removeLink(model);
-    } else if(model instanceof FeatureModel) {
-      this._removeFeature(model);
-    } else if(model instanceof ControlModel) {
-      this._removeControl(model);
-    } else if(model instanceof LayoutModel) {
-      this._removeLayout(model);
+  removeFeature(model: ModelType) {
+    if(model.getModelType() === 'FeatureModel') {
+      this._removeFeature(model as FeatureModel);
+    } 
+    if(model.getModelType() === 'ControlModel') {
+      this._removeControl(model as ControlModel);
+    } 
+    if(model.getModelType() === 'LayoutModel') {
+      this._removeLayout(model as LayoutModel);
+    } 
+    if(model.getModelType() === 'GoToLinkModel') {
+      this._removeLink(model as GoToLinkModel);
     }
   }
 
@@ -2157,15 +2208,24 @@ abstract class Topic extends NodeGraph {
 
         // Adjust icons group based on the font size ...
         const iconGroup = this.getOrBuildIconGroup();
+        const visibleIcon = this.getVisibleIcon();
         const fontHeight = this.getTextShape().getFontHeight();
         const iconHeight = ICON_SCALING_FACTOR * fontHeight;
         iconGroup.seIconSize(iconHeight, iconHeight);
+        if(visibleIcon) {
+          visibleIcon.seIconSize(iconHeight, iconHeight);
+        }
 
         // Calculate size and adjust ...
         const topicHeight = Math.max(iconHeight, textHeight) + padding * 2;
         const textIconSpacing = Math.round(fontHeight / 4);
         const iconGroupWith = iconGroup.getSize().width;
-        const topicWith = iconGroupWith + 2 * textIconSpacing + textWidth + padding * 2;
+        let visibleIconWidth = 0;
+        if(visibleIcon) {
+          visibleIconWidth = visibleIcon.getSize().width; 
+        }
+        const topicWith = visibleIconWidth + iconGroupWith + 2 * textIconSpacing + textWidth + padding * 2;
+
 
         this.setSize({
           width: topicWith,
@@ -2174,8 +2234,11 @@ abstract class Topic extends NodeGraph {
 
         // Adjust all topic elements positions ...
         const yPosition = Math.round((topicHeight - textHeight) / 2);
-        iconGroup.setPosition(padding, yPosition);
-        textShape.setPosition(padding + iconGroupWith + textIconSpacing, yPosition);
+        iconGroup.setPosition(visibleIconWidth + padding, yPosition);
+        if(visibleIcon) {
+          visibleIcon.setPosition(padding, yPosition); 
+        }
+        textShape.setPosition(padding + iconGroupWith + visibleIconWidth + textIconSpacing, yPosition);
       } else {
         // In case of images, the size is fixed ...
         const size = this.getModel().getImageSize();

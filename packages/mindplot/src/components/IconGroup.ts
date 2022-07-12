@@ -49,6 +49,7 @@ class IconGroup {
 
   private _topicId: number;
 
+
   constructor(topicId: number, iconSize: number) {
     $assert($defined(topicId), 'topicId can not be null');
     $assert($defined(iconSize), 'iconSize can not be null');
@@ -83,6 +84,10 @@ class IconGroup {
   /** */
   getSize(): SizeType {
     return this._group.getSize();
+  }
+
+  getIcons(): Icon[] {
+    return this._icons;
   }
 
   /** */

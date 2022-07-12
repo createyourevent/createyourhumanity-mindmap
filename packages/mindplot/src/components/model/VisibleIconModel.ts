@@ -15,6 +15,22 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-type FeatureType = 'note' | 'link' | 'icon' | 'htmlForm' | 'htmlTabsForm' | 'htmlMultistepForm' | 'htmlFormStep' | 'htmlFormTab' | 'visible';
+import { $assert } from '@wisemapping/core-js';
+import FeatureModel from './FeatureModel';
 
-export default FeatureType;
+class VisibleIconModel extends FeatureModel {
+  constructor(attributes) {
+    super('visible');
+    this.setIconType(attributes.id);
+  }
+
+  getIconType(): string {
+    return this.getAttribute('id') as string;
+  }
+
+  setIconType(iconType: string):void {
+    $assert(iconType, 'iconType id can not be null');
+    this.setAttribute('id', iconType);
+  }
+}
+export default VisibleIconModel;

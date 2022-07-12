@@ -27,6 +27,8 @@ class LayoutModel {
 
   private _attributes;
 
+  private _modelType: string;
+
   /**
      * @constructs
      * @param type
@@ -36,7 +38,7 @@ class LayoutModel {
   constructor(type: LayoutType) {
     $assert(type, 'type can not be null');
     this._id = "" + LayoutModel._nextUUID();
-
+    this._modelType = 'LayoutModel';
     this._type = type;
     this._attributes = {};
 
@@ -46,6 +48,10 @@ class LayoutModel {
 
   getAttributes() {
     return { ...this._attributes };
+  }
+
+  getModelType() {
+    return this._modelType;
   }
 
   static capitalize(str: string) {

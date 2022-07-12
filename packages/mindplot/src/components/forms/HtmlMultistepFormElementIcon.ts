@@ -25,7 +25,8 @@ class HtmlMultistepFormElementIcon extends Icon {
         this._htmlElementModel = htmlElementModel;
         this._topic = topic;
         this._readOnly = readOnly;
-    
+        this._topic.adjustShapes();
+        
         const image = this.getImage();
         image.addEvent('click', () => {
           this.remove();
@@ -33,12 +34,12 @@ class HtmlMultistepFormElementIcon extends Icon {
       }
 
       remove() {
-        if(!this._readOnly) {
+        //if(!this._readOnly) {
           const actionDispatcher = ActionDispatcher.getInstance();
           const featureId = this._htmlElementModel.getId();
           const topicId = this._topic.getId();
           actionDispatcher.removeFeatureFromTopic(topicId, featureId);
-        }
+        //}
       }
     
       getModel(): FeatureModel {
